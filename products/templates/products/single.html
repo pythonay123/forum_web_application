@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ product.slug }} on {% endblock title %}
+
+{% block styles %}
+<!--    .starter-template {-->
+<!--        color: #962006;-->
+<!--        }-->
+    .img-responsive {
+        border:1px solid #D5D8DA;
+    }
+    .rounded {
+        border:1px solid #D5D8DA;
+        padding: 8px;
+    }
+    .pull-right {
+        position: absolute;
+        right: 0px;
+    }
+    .pull-left {
+        position: absolute;
+        left: 0px;
+    }
+    .cust-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-bottom: 11em;
+        border-bottom: 1px solid #D5D8DA;
+    }
+    .form-control {
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
+
+{% endblock styles %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-4">
+            {% for prod_image in prod_images %}
+                {% if prod_image.featured %}
+                    <div class="col-xs-12">
+<!--                    <h3>Featured</h3>-->
+                    <img class="rounded" src="{{ prod_image.image.url }}" width="300" height="420"/>
+                    <hr/>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% for prod_image in prod_images %}
+                {% if not prod_image.featured %}
+<!--                    <p>Show all other images not featured</p>-->
+                    <div class="col-xs-3 col-md-3">
+                        <a href="#" class="thumbnail">
+                            <img class="img-responsive" src="{{ prod_image.image.url }}" width="120" height="140"/>
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-sm-8">
+            <div class="col-sm-12 cust-container">
+                <div class="col-sm-9 no-padding pull-left">
+                    <h1>{{ product.title }}</h1>
+                </div>
+                <div class="col-sm-3 pull-right">
+                    <form class="form" method="POST" action="{% url 'add_to_cart' product.slug %}">
+                    {% csrf_token %}
+                        <input class="default-btn btn-block" type="submit" value="Add to Cart" />
+                        <input class="form-control" name="qty" type="number" value="1" />
+                        {% if product.variation_set.sizes %}
+                            <select class="form-control" name="size">
+                                {% for var in product.variation_set.sizes %}
+                                <option value="{{ var.id }}">{{ var.title|capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        {% endif %}
+                        {% if product.variation_set.colors %}
+                            <select class="form-control" name="color">
+                                {% for var in product.variation_set.colors %}
+                                <option value="{{ var.id }}">{{ var.title|capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-12 no-padding">
+                Price: &euro;{{ product.price }}
+                <br />
+                Shipping: Free with purchase of over &euro;25
+            </div>
+            <hr />
+            <div class="col-sm-12 no-padding">
+                {{ product.description|linebreaks }}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,637 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+   *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'work sans', sans-serif;
+    background-color: white;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.menu-wrap{
+    display: flex;
+}
+
+.toggler{
+    display: none;
+}
+
+.hamburger{
+    display: none;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 3rem;
+    width: 100vw;
+    background: linear-gradient(45deg, black, black, #105a89);
+    z-index: 2;
+}
+
+.ul-container > div > div{
+    display: flex;
+}
+
+.ul-container > div > div > ul{
+    margin-right: 2rem;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav ul li{
+    list-style-type: none;
+    margin: 0rem 1rem;
+}
+
+li a{
+    color: #fff;
+    text-decoration: none;
+    transition: .4s;
+}
+
+li a:hover{
+    color: #ccc;
+}
+
+li a:active{
+    color: #ccc;
+}
+
+.logo{
+    color: #fff;
+    font-size: 2rem;
+}
+
+
+  .topics-list {
+    padding-top: 0.5vw;
+  }
+
+  .topics-list ul {
+    position: relative;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    box-sizing: border-box;
+    -moz-box-shadow: 0 0 7px rgba(210, 208, 208, 0.9);
+   -webkit-box-shadow: 0 0 7px rgba(210, 208, 208, 0.9);
+    box-shadow: inset 0 0 7px rgba(210, 208, 208, 0.9);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .topics-list ul li {
+    display: flex;
+    background: #E0E0E0;
+    opacity: 0.6
+    padding: 5px 10px;
+    color: black;
+    padding: 3px 0;
+    transition: 0.5s;
+  }
+
+  .topics-list ul li:nth-child(1){
+    background: #E0E0E0;
+    opacity: 1;
+  }
+
+  .topics-list ul li:nth-child(2){
+    background: #E0E0E0;
+    opacity: 0.9;
+  }
+
+  .topics-list ul li:nth-child(3){
+    background: #E0E0E0;
+    opacity: 1;
+  }
+
+  .topics-list ul li:nth-child(4){
+    background: #E0E0E0;
+    opacity: 0.9;
+  }
+
+  .topics-list ul li span:nth-child(1) {
+    padding-left: 2vw;
+    width: 25vw;
+    text-align: left;
+  }
+
+  .topics-list ul li span:nth-child(1) p {
+    width: 10vw;
+    font-size: 12px;
+  }
+
+  .topics-list ul li span:nth-child(2) {
+    width: 15vw;
+    font-size: 12px;
+    padding-top: 1vw;
+  }
+
+  .topics-list ul li span:nth-child(3) {
+    width: 5vw;
+    text-align: right;
+    font-size: 12px;
+    padding-top: 1vw;
+  }
+
+  .topics-list ul li span:nth-child(4) {
+    width: 35vw;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 1vw;
+    color: #105a89;
+  }
+
+  .topics-list ul li:hover {
+    transform: scale(1.0005);
+    background: #C8C6C6;
+    opacity: 0.8;
+  }
+
+  .top-header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+    align-content: flex-end;
+  }
+
+  .top-header-2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    background-color: #2B547E;
+    opacity: 1;
+    border-radius: 4px;
+  }
+
+  #new-topic {
+    float: right;
+    border: 1px solid;
+    padding: 8px;
+    font-size: 13px;
+    box-shadow: 1px 2px;
+    background-color: #2B547E;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  #cat-head{
+    font-family: 'Open Sans', sans-serif, 'Work Sans', "Times New Roman", Times, serif;
+    font-weight: bold;
+    color: white;
+  }
+
+   .stat{
+        position: fixed;
+        left: 0;
+        top: 45%;
+        background-color: #032336;
+        color: white;
+        padding: 1.5rem 1.5rem;
+        border-radius: 10px;
+        width: 9%;
+    }
+
+    .stat > div{
+        margin-bottom: 1rem;
+    }
+
+  @media only screen and (min-width: 1090px) and (max-width: 1300px){
+    .stat{
+        position: fixed;
+        left: 0;
+        top: 45%;
+        background-color: #032336;
+        color: white;
+        padding: 1rem 1rem;
+        padding-top: 1.5rem;
+        border-radius: 10px;
+        width: 9%;
+        font-size: 0.9rem;
+    }
+
+    .stat > div{
+        margin-bottom: 1rem;
+    }
+  }
+
+   @media only screen and (min-width: 700px) and (max-width: 1090px){
+    .stat{
+        position: fixed;
+        left: 0;
+        top: 45%;
+        background-color: #032336;
+        color: white;
+        padding: 0.5rem 0.5rem;
+        padding-top: 1.2rem;
+        border-radius: 10px;
+        width: 9%;
+        font-size: 0.7rem;
+        padding-right: 0.5rem !important;
+    }
+
+    .stat > div{
+        margin-bottom: 1rem;
+    }
+  }
+
+  @media only screen and (min-width: 300px) and (max-width: 700px){
+    .topics-list {
+    }
+    .stat{
+        position: fixed;
+        left: 0;
+        top: 45%;
+        background-color: #032336;
+        color: white;
+        padding: 0.5rem 0.5rem;
+        padding-top: 1.2rem;
+        border-radius: 10px;
+        width: 9%;
+        font-size: 0.6rem;
+        padding-right: 0.5rem !important;
+    }
+
+    .stat > div{
+        margin-bottom: 1rem;
+    }
+  }
+
+/* -------------Section B----------- */
+
+.section-b{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10rem;
+}
+
+.button{
+    width: 8rem;
+    padding: .5rem 1rem;
+    margin: 2rem 0rem;
+    background-color: #fff;
+    color: #105a89;
+    box-shadow: 0 0 15px #105a89;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s;
+    outline: none;
+    margin-right: 13rem;
+    text-decoration: none;
+}
+
+.button:hover{
+    background-color: #105a89;
+    color: white;
+}
+
+.button:focus{
+    outline: 0;
+}
+
+/* ----------Section C--------- */
+
+.main-category{
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.category-title{
+    background-color: rgb(3, 24, 37);
+    width: 100%;
+    height: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 7px 0;
+    text-align: start;
+}
+
+.category-title > div > h3{
+    padding-left: 2rem;
+    color: #fff;
+    padding-top: .3rem;
+}
+
+.post-drop > div{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 2rem;
+    background-color: #ccc;
+    margin-top: 1rem;
+    border-radius: 10px;
+    transform: translateY(0);
+    transition: .7s all ease-in-out;
+}
+
+.post-drop > div:hover{
+    transform: translateY(-10%);
+}
+
+.directory > h4 > a{
+    text-decoration: none;
+    color: #105a89;
+}
+
+.post-date{
+    color: #105a89;
+    margin-top: .5rem;
+    padding-bottom: 1rem;
+}
+
+/* -----------Footer-------- */
+
+footer{
+     height: 30rem;
+    width: 100%;
+    background: linear-gradient(40deg, black, #105a89);
+    margin-top: 5rem;
+}
+
+.bottom-div{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px #ccc solid;
+}
+
+.comment-image{
+    width: 1.5rem;
+    border-radius: 5px;
+    margin-right: 0.2rem;
+    padding: 0.1vw;
+}
+
+
+@media (max-width: 900px){
+    body{
+        background-color: #fff;
+    }
+
+    .button{
+        width: 8rem;
+        padding: .5rem 1rem;
+        margin: 2rem 0rem;
+        background-color: white;
+        color: #105a89;
+        border: #105a89 solid 1px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: .4s;
+        outline: none;
+        margin-right: 9rem;
+        text-decoration: none;
+    }
+
+}
+
+@media (max-width: 480px){
+    /* -------------Section B----------- */
+
+    .button{
+        margin-right: 2rem;
+        margin-top: 5rem;
+    }
+
+    /* ----------Section C--------- */
+
+.main-category{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-category > div{
+    text-align: center;
+}
+
+.category-title{
+    background-color: #105a89;
+    width: 95%;
+    height: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 7px 0;
+    text-align: start;
+}
+
+.category-body,
+.category-body > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.directory{
+    width: 25%;
+}
+
+.topics{
+    width: 17.5%;
+}
+
+.last-post{
+    width: 17.5%;
+}
+
+.post{
+    width: 35%;
+}
+
+.category-title > div > h3{
+    padding-left: .5rem;
+    color: #fff;
+    padding-top: .3rem;
+}
+
+.post-drop > div{
+    width: 90%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 2rem;
+    background-color: #ccc;
+    margin-top: 1rem;
+    border-radius: 10px;
+    transform: translateY(0);
+    transition: .7s all ease-in-out;
+}
+
+.post-drop > div:hover{
+    transform: translateY(-10%);
+}
+
+.directory > h4 > a{
+    text-decoration: none;
+    color: #105a89;
+}
+
+.post-date{
+    color: #105a89;
+    margin-top: .5rem;
+    padding-bottom: 1rem;
+}
+ /* -----------Footer-------- */
+
+    footer{
+        height: auto;
+        width: 100%;
+        background-color: #105a89;
+        margin-top: 5rem;
+    }
+
+    .footer-div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-div div{
+        text-align: center;
+    }
+
+    .footer-min-h{
+        color: white;
+        padding: 3rem 0rem 1rem 0rem;
+        text-decoration: underline;
+    }
+
+    .footer-p a{
+        color: rgb(160, 168, 192);
+        text-decoration: none;
+    }
+
+    .footer-p a:hover{
+        color: #fff;
+    }
+
+    .bottom-div{
+        display: flex;
+        flex-direction: column;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5rem;
+        padding-top: 3rem;
+        border-top: 1px #ccc solid;
+        padding-bottom: 3rem;
+    }
+}
+
+.topic-date {
+    margin-top: 1rem;
+}
+
+.topic-name a {
+    color: rgb(3, 24, 37);
+}
+
+.topic-name a:hover {
+    color: rgb(3, 24, 37);
+}
+
+.no-available {
+  margin-top: 5vh;
+  margin-bottom: 70vh;
+}
+
+{% endblock style %}
+
+{% block content %}
+  <section class="section-b">
+        <div class="form-div">
+            <form action="submit" class="form">
+                <div class="button-form">
+                    <a href="{% url 'forums:create-thread' category %}" class = "button" type="button">Add Thread</a>
+                </div>
+            </form>
+        </div>
+        {% if request.user.is_authenticated %}
+        <div class="stat">
+            <div>
+                <h4>Points</h4>
+                <h6>{{ request.user.userevaluation.points }}</h6>
+            </div>
+            <div>
+                <h4>Level</h4>
+                <h6>{{ request.user.userevaluation.user_level }}</h6>
+            </div>
+            <div>
+                <h4>Experience</h4>
+                <h6>{{ request.user.userevaluation.seniority }}</h6>
+            </div>
+        </div>
+        {% else %}
+        {% endif %}
+    </section>
+
+    <section class="section-c">
+        <div class="main-category">
+            <div class="category-title">
+                <div>
+                    <h3>{{ category }}</h3>
+                </div>
+            </div>
+            <div class="topics-list">
+                {% if threads %}
+                <ul>
+                  {% for thread in threads %}
+                  <li>
+                    <span class="topic"><strong class="topic-name"><a href="{{ thread.get_absolute_url }}">{{ thread.topic }}</a></strong>
+                      <p class="topic-date">Posted on {{ thread.posted_date }}</p>
+                    </span>
+                    <span class="posted-by"><img src="{{ thread.author.profile.image.url }}" class="comment-image" alt="" />Started by: {{ thread.author }}</span>
+                    {% if thread.post_set.last %}
+                    <span class="last-post-date">Last post on {{ thread.post_set.last.posted_date }}</span>
+                    {% else %}
+                    <span class="last-post-date"></span>
+                    {% endif %}
+                    <span class="number-posts">{{ thread.post_set.last.get_post_preview }}</span>
+                  </li>
+                  {% endfor %}
+                </ul>
+                <div class="no-available"></div>
+                {% else %}
+                  <p class="no-available"> No threads Available</p>
+                {% endif %}
+              </div>
+        </div>
+    </section>
+
+{% endblock content %}

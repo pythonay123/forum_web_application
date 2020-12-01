@@ -1,0 +1,43 @@
+<section>
+    <header>
+        <div>
+            <nav>
+                <h1 class="logo">saForum</h1>
+                <div class="menu-wrap">
+                    <input type="checkbox" class="toggler">
+                    <div class="hamburger">
+                        <div></div>
+                    </div>
+                    <div class="ul-container">
+                        <div>
+                            <div>
+                                <ul>
+                                    <li><a href="{% url 'home:home' %}">Home</a></li>
+                                    <li><a href="#">Marketplace</a></li>
+                                    <li><a href="#">Escrow</a></li>
+                                    <li><a href="#">Becoming a vendor</a></li>
+                                    <li><a href="{% url 'user_profiles:login' %}">Profile</a></li>
+                                    <li><a href="{% url 'support:support' %}">Support</a></li>
+                                </ul>
+                                <ul class="login-logout">
+                                    {% if request.user.is_authenticated %}
+                                    {% else %}
+                                    <li><a href="{% url 'user_profiles:login' %}">Sign In</a></li>
+                                     {% endif %}
+                                    {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'user_profiles:logout' %}">Logout</a></li>
+                                    {% else %}
+                                    <li><a href="{% url 'registration:register' %}">Register</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
+        </div>
+    </header>
+</section>

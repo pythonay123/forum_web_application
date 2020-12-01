@@ -1,0 +1,16 @@
+{
+  "name": "gulp_proj",
+  "version": "1.0.0",
+  "description": "For scss compiling to css",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch static_files\\forums\\scss -o static_files\\forums\\css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2"
+  }
+}

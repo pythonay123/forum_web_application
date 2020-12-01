@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load no_featured %}
+
+{% block title %}All products on {% endblock title %}
+
+{% block styles %}
+    .starter-template {
+        color: #251F1F;
+        }
+{% endblock styles %}
+
+{% block content %}
+    <div class="starter-template">
+        <div class="row">
+            {% for product in products %}
+                <div class="col-sm-6 col-md-2">
+                    <div class="thumbnail">
+                        {% if product.productimage_set.all %}
+                            {% for item in product.productimage_set.all %}
+                                {% if item.featured %}
+                                    <a href="{{ product.get_absolute_url }}"><div style="
+                                    width:63px;
+                                    height:88px;
+                                    /*background-color:red;*/
+                                    background-image: url('{{ item.image.url }}');
+                                    background-repeat: no-repeat;
+                                    background-size: cover;
+                                    background-position: center;
+                                    margin: 0 auto;">
+                                    </div></a>
+<!--                                    <img class="img-responsive" src="{{ item.image.url }}"/>-->
+                                {% else %}
+                                    {% abs_featured item as no_feat_list %}
+                                {% endif %}
+                            {% endfor %}
+<!--                            Displaying the default image if none of the image present is set as featured image-->
+                            {% if product.productimage_set.all|length == no_feat_list|length %}
+                                <a href="{{ product.get_absolute_url }}"><img class="img-responsive" src="{% static 'img/default.jpg' %}"/></a>
+                            {% endif %}
+                            {% clear_featured as no_feat_list %}
+                        {% else %}
+                            <a href="{{ product.get_absolute_url }}"><img class="img-responsive" src="{% static 'img/default.jpg' %}"/></a>
+                        {% endif %}
+                        <div class="caption">
+                            <a href="{% url 'single_product' product.slug %}"><h4>{{ product.title }}</h4></a>
+                            <p><a class="btn btn-primary" role="button" href="{% url 'single_product' product.slug %}">
+                                view
+                            </a></p>
+    <!--                    <a href="{{ product.get_absolute_url }}">{{ product }}</a>-->
+                            &euro;{{ product.price }}
+                        </div>
+                    </div>
+                </div>
+            {% cycle "" "" "" "" "" "</div><br/><hr/><div class='row'>" %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

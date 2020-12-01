@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+{% load tz %}
+{% get_current_timezone as TIME_ZONE %}
+
+{% block title %}Register{% endblock title %}
+
+{% block style %}
+.section-b{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eff3f6;
+}
+
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 7px 0 #ccc;
+    padding: 6rem 5rem;
+    border-radius: 1%;
+    margin-top: 10rem;
+    background-color: #fff;
+}
+
+#form-header-text{
+    color: #105a89;
+    margin-bottom: 2rem;
+}
+
+label{
+    margin: .4rem;
+}
+
+input{
+    width: 20rem;
+    padding: .5rem 1rem .5rem .5rem;
+    border-radius: 5%;
+    outline: 0;
+    border: 1px #ccc solid;
+}
+
+.input-form{
+    display: flex;
+    flex-direction: column;
+    margin: .5rem 0rem;
+}
+
+button{
+    width: 8rem;
+    padding: .5rem 1rem;
+    margin: 2rem 0rem;
+    background-color: white;
+    color: #105a89;
+    border: #105a89 solid 1px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: .4s;
+    outline: none;
+}
+
+button:hover{
+    background-color: #105a89;
+    color: white;
+}
+
+button:focus{
+    outline: 0;
+}
+
+.button-form{
+    display: flex;
+    justify-content: center;
+}
+
+.sign-in-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#sign-in{
+    color: #105a89;
+    text-decoration: none;
+    margin-top: .5rem;
+    transition: .3s ease-in;
+}
+
+#sign-in:hover{
+    color: rgb(136, 46, 46);
+    font-weight: bold;
+}
+
+.errorlist {
+    list-style: none;
+    color: rgba(255, 0, 0, 0.7);
+    width: 18rem;
+    word-wrap: break-word;
+}
+
+
+@media (max-width: 480px){
+    body{
+        background-color: #eff3f6;
+    }
+
+     /* -------------Section B----------- */
+
+    .section-b{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: unset;
+        padding: 6rem 3rem;
+        border-radius: 1%;
+        margin-top: 3rem;
+        background-color: #fff;
+    }
+
+    #form-header-text{
+        color: #105a89;
+        margin-bottom: 2rem;
+    }
+
+    label{
+        margin: .4rem;
+    }
+
+    input{
+        width: 20rem;
+        padding: .5rem 1rem .5rem .5rem;
+        border-radius: 5%;
+        outline: 0;
+        border: 1px #ccc solid;
+    }
+
+    .input-form{
+        display: flex;
+        flex-direction: column;
+        margin: .5rem 0rem;
+    }
+
+    button{
+        width: 8rem;
+        padding: .5rem 1rem;
+        margin: 2rem 0rem;
+        background-color: white;
+        color: #105a89;
+        border: #105a89 solid 1px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: .4s;
+    }
+
+    button:hover{
+        background-color: #105a89;
+        color: white;
+    }
+
+    button:focus{
+        outline: 0;
+    }
+
+    .button-form{
+        display: flex;
+        justify-content: center;
+    }
+
+    .sign-in-column{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #sign-in{
+        color: #105a89;
+        text-decoration: none;
+        margin-top: .5rem;
+        transition: .3s ease-in;
+    }
+
+    #sign-in:hover{
+        color: rgb(136, 46, 46);
+        font-weight: bold;
+    }
+
+    .errorlist {
+    list-style: none;
+    color: rgba(255, 0, 0, 0.7);
+    width: 18rem;
+    word-wrap: break-word;
+    }
+
+}
+
+{% endblock style %}
+
+
+{% block content %}
+<section class="section-b">
+    <div class="form-div">
+        <form action="{% url 'registration:register' %}" class="form" method="POST">
+            {% csrf_token %}
+            <div>
+                <h3 id="form-header-text">Register with us</h3>
+            </div>
+            <div class="input-form">
+                <label for="{{ user_form.first_name.id_for_label }}">First Name</label>
+                {{ user_form.first_name }}
+                {{ user_form.first_name.errors }}
+            </div>
+            <div class="input-form">
+                <label for="{{ user_form.last_name.id_for_label }}">Last Name</label>
+                {{ user_form.last_name }}
+                {{ user_form.last_name.errors }}
+            </div>
+            <div class="input-form">
+                <label for="{{ user_form.username.id_for_label }}">Username</label>
+                {{ user_form.username }}
+                {{ user_form.username.errors }}
+            </div>
+            <div class="input-form">
+                <label for="{{ user_form.password1.id_for_label }}">Password</label>
+                {{ user_form.password1 }}
+                {{ user_form.password1.errors }}
+            </div>
+            <div class="input-form">
+                <label for="{{ user_form.password2.id_for_label }}">Confirm Password</label>
+                {{ user_form.password2 }}
+                {{ user_form.password2.errors }}
+            </div>
+<!--            <div class="input-form">-->
+<!--                <label for="timezone" id="time-zone">Your Region</label>-->
+<!--                <select name="timezone">-->
+<!--                    {% for tz in timezones %}-->
+<!--                    <option value="{{ tz }}"{% if tz == TIME_ZONE %} selected{% endif %}>{{ tz }}</option>-->
+<!--                    {% endfor %}-->
+<!--                </select>-->
+<!--            </div>-->
+            <div class="button-form">
+                <button type="submit" value="register">Register</button>
+            </div>
+            <div class="sign-in-column">
+                <h4>Already have an account?</h4>
+                <a href="{% url 'user_profiles:login' %}" id="sign-in">Sign in</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock content %}

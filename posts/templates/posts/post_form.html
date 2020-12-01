@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block style %}
+  header {
+    background: #2B547E;
+  }
+
+  .content-postform{
+    padding-top: 6vw;
+    padding-left: 15vw;
+    padding-right: 15vw;
+  }
+
+  textarea {
+    width: 58vw;
+    resize: none;
+  }
+
+  .fieldWrapper {
+    text-align: center;
+  }
+
+  .border-label {
+    color: #105a89;
+  }
+
+  .form-grp2 {
+    margin-top: 1.5vw;
+    text-align: center;
+  }
+
+  .btn-info {
+    color: #90ee90;
+    padding: 7px;
+    border: 1px solid;
+    padding: 8px 14px;
+    font-size: 13px;
+    box-shadow: 1px 2px;
+    background-color: #2B547E;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+
+  @media only screen and (min-width: 1090px) and (max-width: 1300px){
+    .content-postform {
+      padding-top: 6vw;
+      padding-left: 15vw;
+      padding-right: 15vw;
+    }
+  }
+
+   @media only screen and (min-width: 700px) and (max-width: 1090px){
+    .content-postform {
+      padding-top: 9vw;
+      padding-left: 13vw;
+      padding-right: 13vw;
+    }
+  }
+
+  @media only screen and (min-width: 300px) and (max-width: 700px){
+    .content-postform {
+      padding-top: 12vw;
+      padding-left: 15vw;
+      padding-right: 15vw;
+    }
+  }
+
+.no-available {
+  margin-top: 5vh;
+  margin-bottom: 60vh;
+}
+
+{% endblock style %}
+
+{% block content %}
+    <div class="content-postform">
+        <form method="post">
+            {% csrf_token %}
+            <fieldset class="form-grp">
+                <legend class="border-label">Post On Thread</legend>
+                {% for field in form %}
+                  <div class="fieldWrapper">
+                      {{ field.errors }}
+                      {{ field }}
+                      {% if field.help_text %}
+                      <p class="help">{{ field.help_text|safe }}</p>
+                      {% endif %}
+                  </div>
+                {% endfor %}
+            </fieldset>
+            <div class="form-grp2">
+                <button class="btn-info" type="submit" value="post" name="post">Post</button>
+            </div>
+            <div class="no-available"></div>
+        </form>
+    </div>
+{% endblock %}
