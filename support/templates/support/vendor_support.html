@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Settings Support{% endblock title %}
+
+{% block style %}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'work sans', sans-serif;
+    background-color: #fff;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+/*--------------Section B------------ */
+
+.section-b{
+    margin-top: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-b-div{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-b > div > h1{
+    color: #105a89;
+    margin-bottom: 1rem;
+}
+
+.section-b > div > div > ul >li{
+    list-style-type: none;
+    margin: .5rem 0;
+}
+
+.section-b > div > div > ul > li > a{
+    color: #105a89;
+}
+
+.section-b > div > div > ul > li > a:hover{
+    text-decoration: underline;
+}
+
+@media (max-width: 900px){
+/*--------------Section B------------ */
+
+.section-b-div{
+    text-align: center;
+}
+}
+
+@media (max-width: 480px){
+body{
+        background-color: white;
+    }
+}
+{% endblock style %}
+
+
+{% block content %}
+
+<section class="section-b">
+    <div class="section-b-div">
+        <h1>Vendor Support</h1>
+        <div>
+            <ul>
+                <li><a href="{% url 'support:vendor-message' %}">Vendor Account</a></li>
+                <li><a href="{% url 'support:vendor-message' %}">Products</a></li>
+                <li><a href="{% url 'support:vendor-message' %}">Payment Processing</a></li>
+                <li><a href="{% url 'support:vendor-message' %}">Report a Buyer</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}Personal Support{% endblock title %}
+
+{% block style %}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'work sans', sans-serif;
+    background-color: #fff;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+/*--------------Section B------------ */
+
+.section-b{
+    margin-top: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-b-div{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-b > div > h1{
+    color: #105a89;
+    margin-bottom: 1rem;
+}
+
+.section-b > div > div > ul >li{
+    list-style-type: none;
+    margin: .5rem 0;
+}
+
+.section-b > div > div > ul > li > a{
+    color: #105a89;
+}
+
+.section-b > div > div > ul > li > a:hover{
+    text-decoration: underline;
+}
+
+@media (max-width: 900px){
+  .section-b-div{
+    text-align: center;
+}
+}
+
+@media (max-width: 480px){
+  body{
+      background-color: white;
+  }
+}
+{% endblock style %}
+
+
+{% block content %}
+
+<section class="section-b">
+    <div class="section-b-div">
+        <h1>Market Place Support</h1>
+        <div>
+            <ul>
+                <li><a href="{% url 'support:market-message' %}">Customer Support</a></li>
+                <li><a href="{% url 'support:market-message' %}">Report a Seller</a></li>
+                <li><a href="{% url 'support:market-message' %}">Request a Refund</a></li>
+                <li><a href="{% url 'support:market-message' %}">cryptocurrency Issues</a></li>
+                <li><a href="{% url 'support:market-message' %}">miscellaneous</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

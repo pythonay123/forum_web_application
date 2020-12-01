@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ query }} search on {% endblock title %}
+
+{% block styles %}
+    .background-image-thumb {
+        width: 125px;
+        height: 175px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        margin: 0 auto;
+    }
+{% endblock styles %}
+
+{% block content %}
+    <h2>Search for: {{ query }}</h2>
+    <table class="table">
+        <thead>
+            <th></th>
+            <th>Product</th>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td style="width:200px; height:175;">
+                    <a href="{{ product.get_absolute_url }}">
+                        <div style="
+                         {% if product.productimage_set.all %}
+                            {% for pro_img in product.productimage_set.all %}
+                                {% if pro_img.featured and pro_img.active %}
+                                    background-image: url('{{ pro_img.image.url }}');
+                                {% endif %}
+                                /* Could use the same logic used in the home view if none of the product image is featured image */
+                                /* But there should always be a featured image for each product as long as it has at least one product image */
+                            {% endfor %}
+                         {% else %}
+                            background-image: url('{% static 'img/default.jpg' %}');
+                        {% endif %}
+                    " class="background-image-thumb"></div>
+                    </a>
+                </td>
+                <td><a href="{{ product.get_absolute_url }}">{{ product }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

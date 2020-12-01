@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+
+{% block title %}Support Message{% endblock title %}
+
+{% block style %}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'work sans', sans-serif;
+    background-color: #fff;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+/*--------------Section B------------ */
+
+.section-b{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 0rem;
+    border-radius: 1%;
+    margin-top: 10rem;
+    background-color: #fff;
+}
+
+#form-header-text{
+    color: #105a89;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    position: absolute;
+    top: 10rem;
+    left: 10rem;
+}
+
+label{
+    margin: .4rem;
+}
+
+input{
+    width: 20rem;
+    padding: .5rem 1rem .5rem .5rem;
+    border-radius: 5%;
+    outline: 0;
+    border: 1px #ccc solid;
+}
+
+.input-form{
+    display: flex;
+    flex-direction: column;
+    margin: .5rem 0rem;
+}
+
+textarea{
+    padding: 1rem 4.5rem 1rem 0.5rem;
+    border-radius: 2%;
+}
+
+button{
+    width: 8rem;
+    padding: .5rem 1rem;
+    margin: 2rem 0rem;
+    background-color: white;
+    color: #105a89;
+    border: #105a89 solid 1px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: .4s;
+    outline: none;
+}
+
+button:hover{
+    background-color: #105a89;
+    color: white;
+}
+
+button:focus{
+    outline: 0;
+}
+
+.button-form{
+    display: flex;
+    justify-content: center;
+}
+
+.sign-in-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#sign-in{
+    color: #105a89;
+    text-decoration: none;
+    margin-top: .5rem;
+    transition: .3s ease-in;
+}
+
+#sign-in:hover{
+    color: rgb(136, 46, 46);
+    font-weight: bold;
+}
+
+.messages {
+    color: rgba(255, 0, 0, 0.7);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    position: absolute;
+    top: 5rem;
+    left: 10rem;
+    }
+
+@media (max-width: 900px){
+/*--------------Section B------------ */
+
+.section-b-div{
+    text-align: center;
+}
+
+#form-header-text{
+    top: 10rem;
+    left: 21rem;
+}
+}
+
+@media (max-width: 480px){
+ body{
+        background-color: white;
+    }
+
+/*--------------Section B------------ */
+
+#form-header-text{
+    top: 10rem;
+    left: 7rem;
+}
+}
+{% endblock style %}
+
+
+{% block content %}
+
+<section class="section-b">
+    <div class="form-div">
+         {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                    {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form class="form" method="post">
+             {% csrf_token %}
+            <div>
+                <h3 id="form-header-text">Support!</h3>
+            </div>
+            <div class="input-form">
+                <label for="{{ support_form.main_category.id_for_label }}">Main Category</label>
+                {{ support_form.main_category }}
+                {{ support_form.main_category.errors }}
+            </div>
+            <div class="input-form">
+                <label for="{{ support_form.sub_category.id_for_label }}">Sub Category</label>
+                {{ support_form.sub_category }}
+                {{ support_form.sub_category.errors }}
+            </div>
+            <div class="input-form">
+                <label for="{{ support_form.username.id_for_label }}">Username</label>
+                {{ support_form.username }}
+                {{ support_form.username.errors }}
+            </div>
+            <div class="input-form">
+                <label for="{{ support_form.email.id_for_label }}">Email</label>
+                {{ support_form.email }}
+                {{ support_form.email.errors }}
+            </div>
+            <div class="input-form">
+                <label for="{{ support_form.message.id_for_label }}">Message</label>
+                <textarea name="message" id="id_message" cols="30" rows="10" placeholder="Enter message" required></textarea>
+                {{ support_form.message.errors }}
+            </div>
+            <div class="button-form">
+                <button type="submit" value="message">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock content %}

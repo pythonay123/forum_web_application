@@ -1,0 +1,1364 @@
+{% extends 'base.html' %}
+{% load tz %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+{% block style %}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'work sans', sans-serif;
+    background-color: #eff3f6;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.menu-wrap{
+    display: flex;
+}
+
+.toggler{
+    display: none;
+}
+
+.hamburger{
+    display: none;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 3rem;
+    width: 100vw;
+    background-color: #105a89;
+    z-index: 2;
+}
+
+.ul-container > div > div{
+    display: flex;
+}
+
+.ul-container > div > div > ul{
+    margin-right: 2rem;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav ul li{
+    list-style-type: none;
+    margin: 0rem 1rem;
+}
+
+#logout{
+    margin-left: 5rem;
+}
+
+li a{
+    color: #fff;
+    text-decoration: none;
+    transition: .4s;
+}
+
+li a:hover{
+    color: #ccc;
+}
+
+li a:active{
+    color: #ccc;
+}
+
+.logo{
+    color: #fff;
+    font-size: 2rem;
+}
+
+/* -------------Section B----------- */
+
+.section-b{
+    margin-top: 3rem;
+    color: blue;
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-head{
+    display: flex;
+    background-color: #5088ac;
+    height: 5rem;
+    width: 100vw;
+    color: #fff;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.profile-head > div > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-head > div > div > h2{
+    margin-right: 2rem;
+}
+
+#bio{
+    display: flex;
+    align-items: flex-start;
+}
+
+#bio-content{
+    width: 50%;
+}
+
+#location-icon{
+    margin-right: 2rem;
+    width: 1rem;
+    opacity: .9;
+}
+
+#stat{
+    width: 15rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#stat > div{
+    text-align: center;
+}
+
+#stat > div > h6{
+    color: #363635;
+    margin-top: .3rem;
+}
+
+/* ----------Profile Nav------------ */
+
+.profile-nav{
+    display: flex;
+    width: 100%;
+    height: 3rem;
+    margin-top: 1rem;
+    background-color: transparent;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+.profile-nav ul{
+    height: 3rem;
+    width: 70%;
+    display: flex;
+    background-color: white;
+    align-items: center;
+    margin-right: 1.3rem;
+    justify-content: space-evenly;
+    border-radius: 10px;
+}
+
+.profile-nav > ul > li{
+    list-style-type: none;
+}
+
+.profile-nav > ul > li > a{
+    color: #105a89;
+    display: flex;
+    text-decoration: none;
+}
+
+.profile-nav-toggle{
+    display: none;
+}
+
+/* -----Profile Div----- */
+
+.profile-div{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.profile-info-1{
+    width: 25%;
+    background-color: transparent;
+    border-radius: 10px;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 40rem;
+    margin-right: 2rem;
+}
+
+.profile-info{
+    width: 25%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 40rem;
+    position: absolute;
+    top: 8rem;
+    left: 2rem;
+}
+
+.image-div{
+    background-color: #105a89;
+    height: 10rem;
+    position: relative;
+    background-image: url('../../asset/tech.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-div:hover ~ #edit-cover{
+    opacity: 1;
+}
+
+#cover-photo{
+    width: 100%;
+    height: 100%;
+}
+
+#hr{
+    background-color: #ccc;
+    width: 100%;
+    height: 1px;
+    margin-top: 10rem;
+}
+
+#hr-m{
+    background-color: #ccc;
+    width: 100%;
+    height: 1px;
+    margin-top: 3rem;
+}
+
+#edit-cover{
+    color: white;
+    font-size: 1rem;
+    margin-top: 3rem;
+    text-align: center;
+    font-weight: lighter;
+    opacity: 0;
+}
+
+#profile-image{
+    width: 45%;
+    border-radius: 50%;
+    margin-top: 2px;
+    position: absolute;
+    top: 60%;
+    left: 23%;
+    border: 3px white solid;
+}
+
+.navigation{
+    margin-top: 3rem;
+    padding-bottom: 5rem;
+}
+
+.navigation div > ul{
+    width: 100%;
+    height: 10rem;
+}
+
+.navigation div > ul >li{
+    list-style-type: none;
+    display: flex;
+}
+
+.navigation > div > h3{
+    color: #105a89;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+.profiler{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.profiler > h3{
+    width: 40%;
+    color: #105a89;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.profiler > h5{
+    width: 50%;
+    color: #363635;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.icon{
+    margin-right: 1rem;
+    opacity: .4;
+    width: 1rem;
+    margin-left: 3rem;
+}
+
+.navigation{
+    margin-top: 3rem;
+    padding-bottom: 5rem;
+}
+
+.navigation > div > ul > li{
+    list-style-type: none;
+}
+
+.navigation > div > ul > li > a{
+    text-decoration: none;
+    color: #105a89;
+    margin-left: 2rem;
+    transition: .4s;
+}
+
+.navigation > div > ul > li > a:hover{
+    color: red;
+    font-weight: bold;
+}
+
+.side-nav{
+    margin-top: 2rem;
+}
+
+#active{
+    color: red;
+    font-weight: bold;
+}
+
+/* -----------Setting------------ */
+
+.profile-body{
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: .5rem;
+}
+
+.edit{
+    margin-bottom: 5rem;
+}
+
+.edit > div > h3{
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.edit > div{
+    display: flex;
+    flex-direction: column;
+    color: #105a89;
+    justify-content: center;
+    align-items: center;
+}
+
+#date-input{
+    width: 20rem;
+    padding: .5rem 1rem .5rem 1rem;
+}
+
+.edit > h2{
+    color: #363635;
+    margin-top: 3rem;
+    text-align: start;
+}
+
+textarea{
+    width: 20rem;
+    border-radius: 5px;
+    padding: .5rem 2rem;
+}
+
+label{
+    color: #363635;
+    margin-bottom: 1rem;
+}
+
+.file-holder{
+    border: none;
+}
+
+.file-l{
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+
+.input-holder{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    justify-content: flex-start;
+}
+
+.input-holder > button{
+    width: 8rem;
+    background-color: #105a89;
+    border: 1px solid white;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 1rem;
+    transition: .3s;
+    color: white;
+}
+
+.input-holder > button:hover{
+    background-color: #105a89;
+    border: 1px solid #105a89;
+    color: white;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+
+
+.input-holder > input{
+    padding: .5rem 8rem .5rem 2rem;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+/* ---------Ad Div-------- */
+
+
+.ad-div{
+    width: 18%;
+    background-color: white;
+    margin-top: .5rem;
+    border-radius: 10px;
+    height: 30rem;
+}
+
+.ad-div h1{
+    color: #105a89;
+    text-align: center;
+    margin: 10rem 1rem 0 1rem;
+}
+
+
+
+
+/* -----------Footer-------- */
+
+footer{
+    height: 30rem;
+    width: 100%;
+    background-color: #105a89;
+    margin-top: 5rem;
+}
+
+.footer-div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.footer-min-h{
+    color: white;
+    padding: 5rem 0rem 2rem 0rem;
+    text-decoration: underline;
+}
+
+.footer-p a{
+    color: rgb(160, 168, 192);
+    text-decoration: none;
+}
+
+.footer-p a:hover{
+    color: #fff;
+}
+
+.bottom-div{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px #ccc solid;
+}
+
+.messages {
+    color: rgba(0, 128, 0, 0.7);
+    padding-left: 0.5rem;
+    list-style: none;
+}
+
+.input-holder input {
+    color: rgb(105,105,105);
+}
+
+.input-holder textarea {
+    color: rgb(105,105,105);
+}
+
+.input-holder select {
+    color: rgb(105,105,105);
+}
+
+.input-holder label {
+    font-weight: bold;
+}
+
+.phone-field-ext {
+    color: black;
+}
+
+.phone-field-ext input {
+    color: rgb(105,105,105);
+}
+
+@media (max-width: 900px){
+    body{
+        background-color: #e1e2d0;
+    }
+
+    nav{
+        font-size: .55rem;
+    }
+
+    .logo{
+        font-size: 1rem;
+    }
+
+    /* -------------Section B----------- */
+
+
+.profile{
+    font-size: .8rem;
+}
+
+.profile-body{
+    margin-left: 1rem;
+}
+
+.profile-head > div > div > h2{
+    font-size: 1rem;
+}
+
+/* -------Profiler------- */
+
+.profiler > h5{
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: .7rem;
+    text-align: center ;
+}
+
+.profile-nav ul{
+    height: 3rem;
+    width: 70%;
+    margin-right: .5rem;
+    justify-content: space-evenly;
+}
+
+
+#hr{
+    margin-top: 5rem;
+}
+
+
+
+.icon{
+    margin-left: 1.5rem;
+}
+
+
+
+/* ---------Ad Div-------- */
+
+.ad-div h1{
+    font-size: 1rem;
+    margin: 10rem 1rem 0 1rem;
+}
+
+
+
+
+/* -----------Footer-------- */
+
+footer{
+    height: 30rem;
+    width: 100%;
+    background-color: #105a89;
+    margin-top: 5rem;
+}
+
+.footer-div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.footer-min-h{
+    color: white;
+    padding: 5rem 0rem 2rem 0rem;
+    text-decoration: underline;
+}
+
+.footer-p a{
+    color: rgb(160, 168, 192);
+    text-decoration: none;
+}
+
+.footer-p a:hover{
+    color: #fff;
+}
+
+.bottom-div{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px #ccc solid;
+}
+
+
+@media (max-width: 480px){
+
+    body{
+        background-color: white;
+    }
+
+    nav ul{
+        flex-direction: column;
+    }
+
+    .ul-container > div > div{
+        flex-direction: column;
+    }
+
+    .ul-container > div > div > ul{
+        margin-bottom: 2rem;
+        margin-top: 5rem;
+    }
+
+    .menu-wrap{
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .menu-wrap .toggler{
+        display: block;
+        position: absolute;
+        top: .7rem;
+        right: 3rem;
+        z-index: 2;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        opacity: 0;
+    }
+
+    .menu-wrap .hamburger{
+        position: absolute;
+        top: .7rem;
+        right: 3rem;
+        height: 30px;
+        width: 30px;
+        background-color: #105a89;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5%;
+    }
+
+    .menu-wrap .hamburger > div{
+        position: relative;
+        width: 100%;
+        background-color: #fff;
+        height: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s all;
+        z-index: 1;
+    }
+
+    .menu-wrap .hamburger > div:before,
+    .menu-wrap .hamburger > div:after{
+        content: '';
+        position: absolute;
+        z-index: 1;
+        top: -10px;
+        width: 100%;
+        height: 2px;
+        z-index: 1;
+        background-color: inherit;
+    }
+
+    .menu-wrap .hamburger > div:after{
+        top: 10px;
+    }
+
+    .menu-wrap .toggler:checked + .hamburger > div{
+        transform: rotate(135deg);
+    }
+
+    .menu-wrap .toggler:checked + .hamburger > div:before,
+    .menu-wrap .toggler:checked + .hamburger > div:after{
+        top: 0;
+        transform: rotate(90deg);
+    }
+
+    .menu-wrap .toggler:checked:hover + .hamburger > div{
+        transform: rotate(225deg);
+    }
+
+    .menu-wrap .ul-container{
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        visibility: hidden;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu-wrap .ul-container > div{
+        background-color: #0009;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex: none;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-100%);
+        transition: all 0.3s;
+    }
+
+    .menu-wrap .ul-container > div > div{
+        text-align: center;
+        max-width: 90vw;
+        height: 100vh;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .menu-wrap .ul-container > div > div > ul> li{
+        margin: .5rem 0rem;
+    }
+
+
+    /* ----------show menu------- */
+
+    .menu-wrap .toggler:checked ~ .ul-container{
+        visibility: visible;
+    }
+
+    .menu-wrap .toggler:checked ~ .ul-container > div{
+        transform: translateY(0);
+        transition-duration: 0.3s;
+    }
+
+    .menu-wrap .toggler:checked ~ .ul-container > div > div{
+        opacity: 1;
+    }
+
+    nav{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 3rem;
+        width: 100vw;
+        background-color: #105a89;
+        font-size: unset;
+    }
+
+    nav ul{
+        justify-content: space-evenly;
+    }
+
+    nav ul li{
+        list-style-type: none;
+        margin: 0rem 1rem;
+    }
+
+    li a{
+        color: #fff;
+        text-decoration: none;
+        transition: .4s;
+    }
+
+    li a:hover{
+        color: #ccc;
+    }
+
+    li a:active{
+        color: #ccc;
+    }
+
+    .logo{
+        color: #fff;
+        font-size: 2rem;
+    }
+
+    /* -------------Section B----------- */
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.profile-head{
+    display: flex;
+    background-color: #5088ac;
+    height: 7rem;
+    width: 100vw;
+    color: #fff;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: .7rem;
+}
+
+.profile-head > div > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-head > div > div > h2{
+    margin-right: 2rem;
+}
+
+#bio{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#location{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#location img{
+    width: .7rem;
+    margin-bottom: .5rem;
+}
+
+#name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#name h2{
+    margin-bottom: .7rem;
+}
+
+#bio-content{
+    width: 50%;
+}
+
+#location-icon{
+    margin-right: 2rem;
+    width: 1rem;
+    opacity: .9;
+}
+
+/* -----Profile Div----- */
+
+.profile-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.profile-info{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: unset;
+    display: flex;
+    flex-direction: column;
+    height: 40rem;
+    position: unset;
+}
+
+.profile-info-1{
+    display: none;
+}
+
+.image-div{
+    background-color: #105a89;
+    height: 10rem;
+    position: relative;background-image: url('../asset/tech.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#cover-photo{
+    width: 100%;
+    height: 100%;
+}
+
+#hr{
+    display: none;
+}
+
+#hr-1{
+    background-color: #ccc;
+    width: 100%;
+    height: 1px;
+    margin-top: 2rem;
+}
+
+#hr-m{
+    background-color: #ccc;
+    width: 100%;
+    height: 1px;
+    margin-top: 1rem;
+}
+
+#profile-image{
+    width: 45%;
+    border-radius: 50%;
+    margin-top: 2px;
+    position: absolute;
+    top: 60%;
+    left: 27%;
+    border: 3px white solid;
+}
+
+.profile-body{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: unset;
+    display: flex;
+    margin-left: unset;
+}
+
+.navigation{
+    margin-top: 10rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navigation > div > h3{
+    margin-left: unset;
+}
+
+.navigation > div > ul > li{
+    list-style-type: none;
+}
+
+.navigation > div > ul > li > a{
+    text-decoration: none;
+    color: #105a89;
+    margin-left: 2rem;
+    transition: .4s;
+}
+
+.side-nav{
+    margin-top: 2rem;
+}
+
+.icon{
+    width: 1rem;
+    margin-left: 20%;
+    opacity: .4;
+}
+
+
+/* ----------Profile Nav------------ */
+
+.profile-nav{
+    display: flex;
+    width: 100%;
+    height: 3rem;
+    background-color: transparent;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+.profile-nav ul{
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    background-color: white;
+    align-items: center;
+    margin-right: .5rem;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+.profile-nav > ul > li{
+    list-style-type: none;
+    width: 25%;
+    height: 3rem;
+    margin-bottom: .3rem;
+}
+
+.profile-nav > ul > li > a{
+    color: #105a89;
+    display: flex;
+    height: 3rem;
+    flex-direction: column;
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem .2rem .2rem .2rem;
+}
+
+.profile-nav > ul > li > a > img{
+    margin-bottom: 1rem;
+}
+
+.profile-nav-toggle{
+    display: none;
+}
+
+#stat{
+    width: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#stat > div{
+    text-align: center;
+}
+
+#stat > div > h6{
+    color: #363635;
+    margin-top: .3rem;
+}
+
+
+
+/* -----------Profile Body----------- */
+
+.edit > h2{
+    margin-left: 1rem;
+}
+
+/* ---------Ad Div-------- */
+
+
+.ad-div{
+    display: none;
+}
+
+.ad-div-clone{
+    display: none;
+}
+
+
+
+
+
+    /* -----------Footer-------- */
+
+    footer{
+        height: auto;
+        width: 100%;
+        background-color: #105a89;
+        margin-top: unset;
+    }
+
+    .footer-div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-div div{
+        text-align: center;
+    }
+
+    .footer-min-h{
+        color: white;
+        padding: 3rem 0rem 1rem 0rem;
+        text-decoration: underline;
+    }
+
+    .footer-p a{
+        color: rgb(160, 168, 192);
+        text-decoration: none;
+    }
+
+    .footer-p a:hover{
+        color: #fff;
+    }
+
+    .bottom-div{
+        display: flex;
+        flex-direction: column;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5rem;
+        padding-top: 3rem;
+        border-top: 1px #ccc solid;
+        padding-bottom: 3rem;
+    }
+}
+
+}
+{% endblock style %}
+
+{% block content %}
+<section class="section-b">
+        <div class="profile">
+            <div class="profile-head">
+                <div>
+                    <div id="name">
+                        <h2>Username: </h2>
+                        <h5>{{ request.user.username }}</h5>
+                    </div>
+                </div>
+                <div>
+                    <div id="bio">
+                        <h2>Title:</h2>
+                        {% if request.user.profile.title %}
+                        <p id="bio-content">{{ request.user.profile.title }}</p>
+                        {% else %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div>
+                    <div id="location">
+                        <img src="{% static 'assets/img/map-marker-alt-solid.svg' %}" id="location-icon" alt="icon" />
+                        {% if request.user.profile.country %}
+                        <h5>{{ request.user.profile.country }}</h5>
+                        {% else %}
+                        <h5>{{ request.session.django_timezone }}</h5>
+                        {% endif %}
+                    </div>
+                </div>
+                <div>
+                    <div id="stat">
+                        <div>
+                            <h4>Points</h4>
+                            <h6>{{ user_evaluation.points }}</h6>
+                        </div>
+                        <div>
+                            <h4>Level</h4>
+                            <h6>{{ user_evaluation.user_level }}</h6>
+                        </div>
+                        <div>
+                            <h4>Experience</h4>
+                            <h6>{{ user_evaluation.seniority }}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-nav">
+                <ul>
+                    <li>
+                        <a href="{% url 'user_profiles:profile' %}" class="profile-nav-toggle"><img src="{% static 'assets/img/poll-h-solid.svg' %}" class ="icon" alt="icon" /><h6>General</h6></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user_profiles:update-profile' request.user.id %}" class="profile-nav-toggle"><img src="{% static 'assets/img/briefcase-solid.svg' %}" class ="icon" alt="icon" /><h6>Profile Changes</h6></a>
+                    </li>
+                    <li>
+                        <a href="" class="profile-nav-toggle"><img src="{% static 'assets/img/tools-solid.svg' %}" class ="icon" alt="icon" /><h6>Account Settings</h6></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user_profiles:password_reset' %}" class="profile-nav-toggle"><img src="{% static 'assets/img/tools-solid.svg' %}" class ="icon" alt="icon" /><h6>Edit Password</h6></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user_profiles:close_account' %}" class="profile-nav-toggle"><img src="{% static 'assets/img/door-closed-solid.svg' %}" class ="icon" alt="icon" /><h6>Close Account</h6></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="profile-div">
+                <div class="profile-info-1"></div>
+                <div class="profile-info">
+                    <div class="image-div">
+                        <img src="{{ user.profile.image.url }}" id = 'profile-image' alt="profile image" />
+                    </div>
+                    <div id="hr"></div>
+                    <div class="navigation">
+                        <div>
+                            <h3>Profile Information</h3>
+                            <ul>
+                                <li class="profiler">
+                                    <h3>Firstname</h3>
+                                    <h5>{{ request.user.first_name|capfirst }}</h5>
+                                </li>
+                                <li class="profiler">
+                                    <h3>Lastname</h3>
+                                    <h5>{{ request.user.last_name|capfirst }}</h5>
+                                </li>
+                                <li class="profiler">
+                                    <h3>Gender</h3>
+                                    <h5>{{ request.user.profile.gender }}</h5>
+                                </li>
+                                <li class="profiler">
+                                    <h3>Date Of Birth</h3>
+                                    {% if request.user.profile.date_of_birth %}
+                                    <h5>{{ request.user.profile.date_of_birth }}</h5>
+                                    {% else %}
+                                    <h5></h5>
+                                    {% endif %}
+                                </li>
+                                <div id="hr-m"></div>
+                                <li class="profiler">
+                                    <h3>Membership</h3>
+                                    <h5>{{ request.user.account.membership }}</h5>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="profile-body" style="padding: 1rem;">
+                    <div class="pb-1">
+                        <div id="hr-1"></div>
+                        <div class="pb-1-post">
+                        <form enctype="multipart/form-data" method="post">{% csrf_token %}
+                          <div class="edit">
+                            <div>
+                                <h3>Edit Profile</h3>
+                            </div>
+
+                            <h2>Profile Information</h2>
+                                <div>
+                                    <div class="input-holder">
+                                        <label for="{{ p_form.title.id_for_label }}">Profile Title</label>
+<!--                                        <input type="text" name="title" id="{{ p_form.id_title }}"/>-->
+                                        {{ p_form.title }}
+                                        {{ p_form.title.errors }}
+                                    </div>
+                                    <div class="input-holder">
+                                        <label for="{{ p_form.address_line_1.id_for_label }}">Address Line 1</label>
+<!--                                        <input type="text" name="address_line_1" id="{{ p_form.id_address_line_1 }}"/>-->
+                                        {{ p_form.address_line_1 }}
+                                        {{ p_form.address_line_1.errors }}
+                                    </div>
+                                    <div class="input-holder">
+                                        <label for="{{ p_form.address_line_2.id_for_label }}">Address Line 2</label>
+<!--                                        <input type="text" name="address_line_2" id="{{ p_form.id_address_line_2 }}"/>-->
+                                        {{p_form.address_line_2 }}
+                                        {{ p_form.address_line_2.errors }}
+                                    </div>
+                                    <div class="input-holder">
+                                        <label for="{{ p_form.street_address.id_for_label }}">Street Address</label>
+                                        <textarea name="street_address" id="{{ p_form.id_street_address }}" cols="10" rows="10">
+                                            {% if p_form.street_address.value %}
+                                            {{ p_form.street_address.value }}
+                                            {% else %}
+                                            {% endif %}
+                                        </textarea>
+                                        {{ p_form.street_address.errors }}
+                                    </div>
+                                    <div class="input-holder">
+                                        <label for="{{ p_form.country.id_for_label }}">Country</label>
+                                        {{ p_form.country }}
+                                        {{ p_form.country.errors }}
+                                    </div>
+                                    <div class="input-holder">
+                                        <label for="{{ p_form.summary.id_for_label }}">Profile Summary</label>
+                                        <textarea name="summary" id="{{ p_form.id_summary }}" cols="10" rows="10">
+                                            {% if p_form.summary.value %}
+                                            {{ p_form.summary.value }}
+                                            {% else %}
+                                            {% endif %}
+                                        </textarea>
+                                        {{ p_form.summary.errors }}
+                                    </div>
+                                    <div class="input-holder">
+                                        <label for="{{ p_form.gender.id_for_label }}">Gender</label>
+                                        {{ p_form.gender }}
+                                        {{ p_form.gender.errors }}
+                                    </div>
+                                    <div class="input-holder">
+                                        <label for="{{ p_form.date_of_birth.id_for_label }}">Date of birth</label>
+                                    </div>
+                                    <div>
+                                        {{ p_form.date_of_birth }}
+                                        {{ p_form.date_of_birth.errors }}
+                                    </div>
+                                    <div class="input-holder">
+                                        <label class ="file-l" for="{{ p_form.image.id_for_label}}">Profile picture</label>
+                                        <input type="file" name="image" id="{{ p_form.id_image }}"/>
+                                        {{ p_form.image.errors }}
+                                    </div>
+                                    <div class="input-holder">
+                                        <label for="{{ p_form.phone.id_for_label }}">Phone Number</label>
+<!--                                        <input type="text" value="{% if p_form.phone.value %}{{ p_form.phone.value }}{% else %}{% endif %}"-->
+<!--                                               name="phone" id="{{ p_form.id_phone }}"/>-->
+                                        {{ p_form.phone }}
+                                        {{ p_form.phone.errors }}
+                                    </div>
+                                    <div class="input-holder">
+                                        <button type="submit" value="update">Save Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                          </form>
+                       </div>
+                    </div>
+                </div>
+
+                <div class="ad-div-clone">
+                    <!-- This is keeping space for the add div -->
+                </div>
+
+            </div>
+
+            </div>
+    </section>
+{% endblock content %}

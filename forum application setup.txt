@@ -1,0 +1,15 @@
+Read me
+
+
+This is a forum web application written in python django
+
+The root directory consists of a manage.py file which is the project command utility interface.
+
+To step up the project in a development environment
+1. cd to the project root directory (where the manage.py file is located)
+2. Run pip install -r requirements.txt
+3. Using the current development database the SQLite provide with this project no need to create a new database schema
+4. Run python manage.py createsuperuser from the project root directory
+5. Run python manage.py runserver from the same project root directory 
+
+Set up is completed.

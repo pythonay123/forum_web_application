@@ -1,0 +1,1240 @@
+{% extends 'base.html' %}
+{% load tz %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+{% block style %}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'work sans', sans-serif;
+    background-color: #eff3f6;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+/* -------------Section B----------- */
+
+.section-b{
+    margin-top:  3rem;
+    color: blue;
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-head{
+    display: flex;
+    background-color: #5088ac;
+    height: 5rem;
+    width: 100vw;
+    color: #fff;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.profile-head > div > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-head > div > div > h2{
+    margin-right: 2rem;
+}
+
+#bio{
+    display: flex;
+    align-items: flex-start;
+}
+
+#bio-content{
+    width: 50%;
+}
+
+#location-icon{
+    margin-right: 2rem;
+    width: 1rem;
+    opacity: .9;
+}
+
+#stat{
+    width: 15rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#stat > div{
+    text-align: center;
+}
+
+#stat > div > h6{
+    color: #363635;
+    margin-top: .3rem;
+}
+
+/* ----------Profile Nav------------ */
+
+.profile-nav{
+    display: flex;
+    width: 100%;
+    height: 3rem;
+    margin-top: 1rem;
+    background-color: transparent;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+.profile-nav ul{
+    height: 3rem;
+    width: 71%;
+    display: flex;
+    background-color: white;
+    align-items: center;
+    margin-right: .5rem;
+    justify-content: space-evenly;
+    border-radius: 10px;
+}
+
+.profile-nav > ul > li{
+    list-style-type: none;
+}
+
+.profile-nav > ul > li > a{
+    color: #105a89;
+    display: flex;
+    text-decoration: none;
+}
+
+.profile-nav-toggle{
+    display: none;
+}
+
+/* -----Profile Div----- */
+
+.profile-div{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.profile-info-1{
+    width: 25%;
+    background-color: transparent;
+    border-radius: 10px;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 40rem;
+}
+
+.profile-info{
+    width: 25%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 40rem;
+    position: absolute;
+    top: 8rem;
+    left: 2rem;
+}
+
+.image-div{
+    background-color: #105a89;
+    height: 10rem;
+    position: relative;background-image: url('../asset/tech.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#cover-photo{
+    width: 100%;
+    height: 100%;
+}
+
+#hr{
+    background-color: #ccc;
+    width: 100%;
+    height: 1px;
+    margin-top: 10rem;
+}
+
+#hr-m{
+    background-color: #ccc;
+    width: 100%;
+    height: 1px;
+    margin-top: 3rem;
+}
+
+#profile-image{
+    width: 45%;
+    border-radius: 50%;
+    margin-top: 2px;
+    position: absolute;
+    top: 60%;
+    left: 23%;
+    border: 3px white solid;
+}
+
+.profile-body{
+    width: 50%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: .5rem;
+    display: flex;
+}
+
+.navigation{
+    margin-top: 3rem;
+    padding-bottom: 5rem;
+}
+
+.navigation div > ul{
+    width: 100%;
+    height: 10rem;
+}
+
+.navigation div > ul >li{
+    list-style-type: none;
+    display: flex;
+}
+
+.navigation > div > h3{
+    color: #105a89;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+.profiler{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.profiler > h3{
+    width: 40%;
+    color: #105a89;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.profiler > h5{
+    width: 50%;
+    color: #363635;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.icon{
+    width: .7rem;
+    color: #105a89;
+    margin-left: 3rem;
+    margin-right: 1rem;
+    opacity: .4;
+}
+
+
+/* -------Posts Div------------- */
+
+.pb-1{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pb-1 > div{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}
+
+.pb-1-head > div > h3 a:hover{
+    color: rgb(105,105,105);
+}
+
+.pb-1-post{
+    display: flex;
+    flex-direction: column;
+}
+
+.post-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-text{
+    width: 60%;
+    color: #363635;
+    font-size: 0.9rem;
+}
+
+.post-btn{
+    padding: .3rem .5rem;
+    background-color: #105a89;
+    color: white;
+    border: none;
+    border-radius: 1%;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+
+.post-image{
+    width: 60%;
+    margin-top: 2rem;
+    border-radius: 5px;
+}
+
+.post-area{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    margin-top: 2rem;
+}
+
+.post-detail{
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 1rem;
+}
+
+.post-content{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-username a{
+    text-decoration: none;
+    color: #105a89;
+}
+
+h3 > a{
+    text-decoration: none;
+    color: #105a89;
+
+}
+
+.reaction{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    margin-bottom: 3rem;
+}
+
+.reaction > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment{
+    border-radius: 5px;
+    padding: .3rem 0 .2rem .5rem;
+    border: 1px solid #ccc;
+    width: 15rem;
+}
+
+.comment-image{
+    width: 1.5rem;
+    border-radius: 5px;
+    margin-right: 3rem;
+}
+
+.comment-output{
+    margin-top: 2rem;
+}
+
+.comment-output img {
+    margin-right: 1rem;
+}
+
+.comment-output-text{
+    color: #363635;
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+
+.comment-output-text > img {
+    margin-right: 0.5rem;
+}
+
+.commentor{
+    color: #105a89;
+}
+
+.commentor a {
+    text-decoration: none;
+}
+
+.like{
+    width: 1.5rem;
+    color: #105a89;
+    margin-left: 3rem;
+    opacity: .4;
+}
+
+.hr{
+    background-color: #ccc;
+    width: 100%;
+    height: 1px;
+    margin-top: 3rem;
+}
+
+/* ---------Ad Div-------- */
+
+
+.ad-div{
+    width: 18%;
+    background-color: #fff;
+    margin-top: 1rem;
+    border-radius: 10px;
+    height: 65vh;
+    position: fixed;
+    top: 11.5rem;
+    right: .4rem;
+}
+
+.ad-div-clone{
+    width: 18%;
+    background-color: transparent;
+    margin-top: 1rem;
+    border-radius: 10px;
+    height: 30rem;
+}
+
+.ad-div h1{
+    color: #105a89;
+    text-align: center;
+    margin: 10rem 1rem 0 1rem;
+}
+
+.ad-div h1{
+    font-size: 1rem;
+}
+
+
+
+.user-eval {
+        text-align: center;
+        color: black;
+    }
+
+.pb-1-size {
+        font-size: 0.9rem;
+    }
+
+.messages {
+    color: rgba(0, 128, 0, 0.7);
+    padding-left: 0.5rem;
+    list-style: none;
+    }
+
+#pay {
+    margin-bottom: 2rem;
+    color: rgb(105,105,105);
+}
+
+#transactions {
+    color: rgb(105,105,105);
+}
+
+@media (max-width: 900px){
+    body{
+        background-color: #eff3f6;
+    }
+
+    nav{
+        font-size: .55rem;
+    }
+
+    .logo{
+        font-size: 1rem;
+    }
+
+    /* -------------Section B----------- */
+
+
+.profile{
+    font-size: .8rem;
+}
+
+.profile-body{
+    margin-left: 1rem;
+}
+
+.profile-head > div > div > h2{
+    font-size: 1rem;
+}
+
+/* -------Profiler------- */
+
+.profiler > h5{
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: .7rem;
+    text-align: center ;
+}
+
+.profile-nav ul{
+    height: 3rem;
+    width: 70%;
+    margin-right: .5rem;
+    justify-content: space-evenly;
+}
+
+
+#hr{
+    margin-top: 5rem;
+}
+
+
+
+.icon{
+    margin-left: 1.5rem;
+}
+
+.comment{
+    width: 10rem;
+}
+
+
+
+/* ---------Ad Div-------- */
+
+.ad-div h1{
+    font-size: 1rem;
+    margin: 10rem 1rem 0 1rem;
+}
+}
+
+@media (max-width: 480px){
+
+    body{
+        background-color: white;
+    }
+
+  /* -------------Section B----------- */
+
+.section-b{
+    margin-top:  3rem;
+    color: blue;
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.profile-head{
+    display: flex;
+    background-color: #5088ac;
+    height: 7rem;
+    width: 100vw;
+    color: #fff;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: .7rem;
+}
+
+.profile-head > div > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-head > div > div > h2{
+    margin-right: 2rem;
+}
+
+#bio{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#location{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#location img{
+    width: .7rem;
+    margin-bottom: .5rem;
+}
+
+#name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#name h2{
+    margin-bottom: .7rem;
+}
+
+#bio-content{
+    width: 50%;
+}
+
+#location-icon{
+    margin-right: 2rem;
+    width: 1rem;
+    opacity: .9;
+}
+
+/* -----Profile Div----- */
+
+.profile-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.profile-info{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: unset;
+    display: flex;
+    flex-direction: column;
+    height: 40rem;
+    position: unset;
+}
+
+.profile-info-1{
+    display: none;
+}
+
+.image-div{
+    background-color: #105a89;
+    height: 10rem;
+    position: relative;background-image: url('../asset/tech.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#cover-photo{
+    width: 100%;
+    height: 100%;
+}
+
+#hr{
+    display: none;
+}
+
+#hr-1{
+    background-color: #ccc;
+    width: 100%;
+    height: 1px;
+    margin-top: 2rem;
+}
+
+#profile-image{
+    width: 45%;
+    border-radius: 50%;
+    margin-top: 2px;
+    position: absolute;
+    top: 60%;
+    left: 27%;
+    border: 3px white solid;
+}
+
+.profile-body{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: unset;
+    display: flex;
+    margin-left: unset;
+}
+
+.navigation{
+    margin-top: 10rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navigation > div > h3{
+    margin-left: unset;
+}
+
+.navigation > div > ul > li{
+    list-style-type: none;
+}
+
+.navigation > div > ul > li > a{
+    text-decoration: none;
+    color: #105a89;
+    margin-left: 2rem;
+    transition: .4s;
+}
+
+.side-nav{
+    margin-top: 2rem;
+}
+
+.icon{
+    width: 1rem;
+    margin-left: 20%;
+    opacity: .4;
+}
+
+
+/* ----------Profile Nav------------ */
+
+.profile-nav{
+    display: flex;
+    width: 100%;
+    height: 3rem;
+    background-color: transparent;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+.profile-nav ul{
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    background-color: white;
+    align-items: center;
+    margin-right: .5rem;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+.profile-nav > ul > li{
+    list-style-type: none;
+    width: 25%;
+    height: 3rem;
+    margin-bottom: .3rem;
+}
+
+.profile-nav > ul > li > a{
+    color: #105a89;
+    display: flex;
+    height: 3rem;
+    flex-direction: column;
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem .2rem .2rem .2rem;
+}
+
+.profile-nav > ul > li > a > img{
+    margin-bottom: 1rem;
+}
+
+.profile-nav-toggle{
+    display: none;
+}
+
+#stat{
+    width: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#stat > div{
+    text-align: center;
+}
+
+#stat > div > h6{
+    color: #363635;
+    margin-top: .3rem;
+}
+
+/* -------Profiler------ */
+
+.profiler > h3{
+    margin-left: unset;
+}
+
+.profiler > h5{
+    color: #363635;
+}
+
+/* -------Posts Div------------- */
+
+.pb-1{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pb-1 > div{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}
+
+.pb-1-head > div > h3 a:hover{
+    color: red;
+}
+
+.pb-1-post{
+    display: flex;
+    flex-direction: column;
+}
+
+.post-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.post-text{
+    width: 100%;
+    color: #363635;
+}
+
+.post-image{
+    width: 100%;
+    margin-top: 2rem;
+    border-radius: 5px;
+}
+
+.post-area{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-detail{
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 1rem;
+}
+
+.post-content{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.post-username{
+    margin-bottom: 2rem;
+}
+
+.post-username a{
+    text-decoration: none;
+    color: #105a89;
+}
+
+h3 > a{
+    text-decoration: none;
+    color: #105a89;
+
+}
+
+.reaction{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+}
+
+.reaction > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment{
+    border-radius: 5px;
+    padding: .3rem 0 .2rem .5rem;
+    border: 1px solid #ccc;
+    width: 15rem;
+}
+
+.comment-image{
+    width: 1.5rem;
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+.comment-output{
+    margin-top: 2rem;
+}
+
+.comment-output-text{
+    color: #363635;
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+
+.commentor{
+    color: #105a89;
+}
+
+.commentor a {
+    text-decoration: none;
+}
+
+.like{
+    width: 1.5rem;
+    color: #105a89;
+    margin-left: 1rem;
+    opacity: .4;
+}
+
+.hr{
+    background-color: #ccc;
+    width: 100%;
+    height: 1px;
+    margin-top: 3rem;
+}
+
+
+
+/* ---------Ad Div-------- */
+
+
+.ad-div{
+    display: none;
+}
+
+.ad-div-clone{
+    display: none;
+}
+}
+
+{% endblock style %}
+
+{% block content %}
+  <section class="section-b">
+        <div class="profile">
+            <div class="profile-head">
+                <div>
+                    <div id="name">
+                        <h2>Username: </h2>
+                        <h5>{{ request.user.username }}</h5>
+                    </div>
+                </div>
+                <div>
+                    <div id="bio">
+                        <h2>Title:</h2>
+                        {% if request.user.profile.title %}
+                        <p id="bio-content">{{ request.user.profile.title }}</p>
+                        {% else %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div>
+                    <div id="location">
+                        <img src="{% static 'assets/img/map-marker-alt-solid.svg' %}" id="location-icon" alt="icon" />
+                        {% if request.user.profile.country %}
+                        <h5>{{ request.user.profile.country }}</h5>
+                        {% else %}
+                        <h5>{{ request.session.django_timezone }}</h5>
+                        {% endif %}
+                    </div>
+                </div>
+                <div>
+                    <div id="stat">
+                        <div>
+                            <h4>Points</h4>
+                            <h6>{{ user_evaluation.points }}</h6>
+                        </div>
+                        <div>
+                            <h4>Level</h4>
+                            <h6>{{ user_evaluation.user_level }}</h6>
+                        </div>
+                        <div>
+                            <h4>Experience</h4>
+                            <h6>{{ user_evaluation.seniority }}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-nav">
+                <ul>
+                    <li>
+                        <a href="{% url 'user_profiles:profile' %}" class="profile-nav-toggle"><img src="{% static 'assets/img/poll-h-solid.svg' %}" class ="icon" alt="icon" /><h6>General</h6></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user_profiles:update-profile' request.user.id %}" class="profile-nav-toggle"><img src="{% static 'assets/img/briefcase-solid.svg' %}" class ="icon" alt="icon" /><h6>Profile Changes</h6></a>
+                    </li>
+                    <li>
+                        <a href="" class="profile-nav-toggle"><img src="{% static 'assets/img/tools-solid.svg' %}" class ="icon" alt="icon" /><h6>Account Settings</h6></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user_profiles:password_reset' %}" class="profile-nav-toggle"><img src="{% static 'assets/img/tools-solid.svg' %}" class ="icon" alt="icon" /><h6>Edit Password</h6></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user_profiles:close_account' %}" class="profile-nav-toggle"><img src="{% static 'assets/img/door-closed-solid.svg' %}" class ="icon" alt="icon" /><h6>Close Account</h6></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="profile-div">
+                <div class="profile-info-1"></div>
+                <div class="profile-info">
+                    <div class="image-div">
+                        <img src="{{ user.profile.image.url }}" id = 'profile-image' alt="profile image" />
+                    </div>
+                    <div id="hr"></div>
+                    <div class="navigation">
+                        <div>
+                            <h3>Profile Information</h3>
+                            <ul>
+                                <li class="profiler">
+                                    <h3>Firstname</h3>
+                                    <h5>{{ request.user.first_name|capfirst }}</h5>
+                                </li>
+                                <li class="profiler">
+                                    <h3>Lastname</h3>
+                                    <h5>{{ request.user.last_name|capfirst }}</h5>
+                                </li>
+                                <li class="profiler">
+                                    <h3>Gender</h3>
+                                    <h5>{{ request.user.profile.gender }}</h5>
+                                </li>
+                                <li class="profiler">
+                                    <h3>Date Of Birth</h3>
+                                    {% if request.user.profile.date_of_birth %}
+                                    <h5>{{ request.user.profile.date_of_birth }}</h5>
+                                    {% else %}
+                                    <h5></h5>
+                                    {% endif %}
+                                </li>
+                                <div id="hr-m"></div>
+                                <li class="profiler">
+                                    <h3>Membership</h3>
+                                    <h5>{{ request.user.account.membership }}</h5>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="profile-body">
+                    <div class="pb-1">
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                                    {{ message }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <div class="pb-1-head">
+                            <div class="pb-1-size">
+                                <h3>
+                                    <a href="">Threads Started</a>
+                                </h3>
+                                <div class="user-eval">
+                                    <p>{{ threads_number }}</p>
+                                </div>
+                            </div>
+                            <div class="pb-1-size">
+                                <h3>
+                                    <a href="">Posts</a>
+                                </h3>
+                                <div class="user-eval">
+                                    <p class="user-eval">{{ posts_number }}</p>
+                                </div>
+                            </div>
+                            <div class="pb-1-size">
+                                <h3>
+                                    <a href="">Ratings</a>
+                                </h3>
+                                <div class="user-eval">
+                                    <p class="user-eval">{{ user_evaluation.user_rating }}</p>
+                                </div>
+                            </div>
+                            <div class="pb-1-size">
+                                <h3>
+                                    <a href="">Views</a>
+                                </h3>
+                                <div class="user-eval">
+                                    <p class="user-eval">{{ profile_views }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="hr-1"></div>
+
+
+                        <div class="pb-1-post">
+
+
+
+
+
+
+                            <div class="post-main">
+                                <div class="post-area">
+                                    <div class="post-detail">
+                                        <h4 class="post-username">
+                                            <a href="">About</a>
+                                        </h4>
+                                    </div>
+                                    <div class="post-content">
+                                        <p class="post-text">
+                                            {% if summary %}
+                                            {{ summary }}
+                                            {% else %}
+                                            {% endif %}
+                                        </p>
+<!--                                        <img src="" class="post-image" alt="">-->
+                                        <div class="comment-output">
+                                            <h4 style="padding-bottom: 1rem; color: rgb(3, 24, 37);">Last Thread Started</h4>
+                                            <h5 class="commentor" style="padding-bottom: 1.5rem;"><a href="{{ most_recent_thread.get_absolute_url }}">{{ most_recent_thread.topic }}</a></h5>
+                                            <!-- Summary of last reply to thread -->
+                                            <h4 style="color: rgb(3, 24, 37);">Last Reply</h4>
+                                            <p class="comment-output-text" style="font-size:0.8rem;">
+                                                <img src="{{ user.profile.image.url }}" class="comment-image" alt="">
+                                                {{ summary_of_last_reply }}  ...
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = 'reaction'>
+                                    {% if most_recent_thread %}
+                                    <img src="{{ user.profile.image.url }}" class="comment-image" alt="">
+                                    <form class="" action="{% url 'posts:post-create' most_recent_thread.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <input type="text" placeholder="comment..." class ="comment" id="id_content" name="content">
+                                        <button type="submit" class="post-btn">Post</button>
+                                    </form>
+                                    {% else %}
+                                    <img src="{{ user.profile.image.url }}" class="comment-image" alt="">
+                                    <input type="text" placeholder="comment..." class ="comment">
+                                    {% endif %}
+                                </div>
+
+                                <div class="hr"></div>
+                            </div>
+
+                            <div class="post-main">
+                                <div class="post-area">
+                                    <div class="post-detail">
+                                        <h4 class="post-username">
+                                            <a href="">Your Last Post</a>
+                                        </h4>
+                                    </div>
+                                    <div class="post-content">
+                                        <p class="post-text">
+                                            {{ last_post_summary }}  .....
+                                            <p class="comment-output-text" style="font-size: 0.7rem; font-weight: bold;">{{ last_post.posted_date }}</p>
+                                        </p>
+<!--                                        <img src="" class="post-image" alt="">-->
+                                        <div class="comment-output">
+                                            <h4 style="padding-bottom: 1rem; color: rgb(3, 24, 37);">Thread Topic</h4>
+                                            <h5 class="commentor"><img class="comment-image" src="{{ last_post.thread.author.profile.image.url }}"/><a href="{{ last_post.thread.get_absolute_url }}">{{ last_post.thread }}</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = 'reaction'>
+                                    {% if last_post %}
+                                    <img src="{{ user.profile.image.url }}" class="comment-image" alt="">
+                                    <form class="" action="{% url 'posts:post-create' last_post.thread.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <input type="text" placeholder="comment..." class ="comment" id="id_content" name="content">
+                                        <button type="submit" class="post-btn">Post</button>
+                                    {% else %}
+                                    <img src="{{ user.profile.image.url }}" class="comment-image" alt="">
+                                    <input type="text" placeholder="comment..." class ="comment">
+                                    </form>
+                                    {% endif %}
+                                </div>
+
+                                <div class="hr"></div>
+                            </div>
+
+                            <div class="post-main">
+                                <div class="post-area">
+                                    <div class="post-detail">
+                                        <h4 class="post-username">
+                                            <a href="">Account Information</a>
+                                        </h4>
+                                    </div>
+                                    <div class="post-content">
+                                        <p class="post-text">
+                                            <p id="pay">
+                                                Payment Methods:
+                                                {{ request.user.account.payments_method }}
+                                            </p>
+                                            <p id="transactions">
+                                                Number of Transactions:
+                                                {{ request.user.account.number_transactions }}
+                                            </p>
+                                        </p>
+                                        <img src="" class="post-image" alt="">
+                                    </div>
+                                </div>
+<!--                                <div class = 'reaction'>-->
+<!--                                    <img src="../asset/50628320.jpg" class="comment-image" alt="">-->
+<!--                                    <input type="text" placeholder="comment..." class ="comment">-->
+<!--                                    <button type="submit" class="post-btn">Post</button>-->
+<!--                                </div>-->
+
+                                <div class="hr"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ad-div-clone">
+                    <!-- This is keeping space for the add div -->
+                </div>
+
+                <div class="ad-div">
+                    <h1>Joined date: {{ request.user.profile.reg_date }}</h1>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+{% endblock content%}

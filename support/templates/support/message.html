@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Settings Support{% endblock title %}
+
+{% block style %}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'work sans', sans-serif;
+    background-color: #fff;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+/*--------------Section B------------ */
+
+.section-b{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 0rem;
+    border-radius: 1%;
+    margin-top: 10rem;
+    background-color: #fff;
+}
+
+#form-header-text{
+    color: #105a89;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    position: absolute;
+    top: 10rem;
+    left: 10rem;
+}
+
+label{
+    margin: .4rem;
+}
+
+input{
+    width: 20rem;
+    padding: .5rem 1rem .5rem .5rem;
+    border-radius: 5%;
+    outline: 0;
+    border: 1px #ccc solid;
+}
+
+.input-form{
+    display: flex;
+    flex-direction: column;
+    margin: .5rem 0rem;
+}
+
+.messages {
+    color: rgba(0, 128, 0, 0.7);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    position: absolute;
+    top: 5rem;
+    left: 10rem;
+    }
+
+{% endblock style %}
+
+
+{% block content %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+{% endblock content %}

@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% block style %}
+
+@import url(https://fonts.googleapis.com/css2?family=Manrope&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600);
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'work sans', sans-serif;
+    background-color: #eff3f6;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+/* -------------Section B----------- */
+
+.section-b{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 7px 0 #ccc;
+    padding: 6rem 5rem;
+    border-radius: 1%;
+    margin-top: 10rem;
+    background-color: #fff;
+}
+
+#form-header-text{
+    color: #105a89;
+    margin-bottom: 2rem;
+}
+
+label{
+    margin: .4rem;
+}
+
+input{
+    width: 20rem;
+    padding: .5rem 1rem .5rem .5rem;
+    border-radius: 5%;
+    outline: 0;
+    border: 1px #ccc solid;
+}
+
+.input-form{
+    display: flex;
+    flex-direction: column;
+    margin: .5rem 0rem;
+}
+
+button{
+    width: 8rem;
+    padding: .5rem 1rem;
+    margin: 2rem 0rem 1rem 0rem;
+    background-color: white;
+    color: #105a89;
+    border: #105a89 solid 1px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: .4s;
+    outline: none;
+}
+
+button:hover{
+    background-color: #105a89;
+    color: white;
+}
+
+button:focus{
+    outline: 0;
+}
+
+.button-form{
+    display: flex;
+    justify-content: center;
+}
+
+.sign-in-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-in-column > div{
+    display: flex;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-in-column > div > h4{
+    margin-right: 1rem;
+    margin-top: .5rem;
+}
+
+.sign-in{
+    color: #105a89;
+    text-decoration: none;
+    margin-top: .5rem;
+    transition: .3s ease-in;
+}
+
+.sign-in:hover{
+    color: rgb(136, 46, 46);
+    font-weight: bold;
+}
+
+@media (max-width: 480px){
+
+    body{
+        background-color: white;
+    }
+
+    /* -------------Section B----------- */
+
+    .section-b{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: unset;
+        padding: 6rem 3rem;
+        border-radius: 1%;
+        margin-top: 3rem;
+        background-color: #fff;
+    }
+
+    #form-header-text{
+        color: #105a89;
+        margin-bottom: 2rem;
+    }
+
+    label{
+        margin: .4rem;
+    }
+
+    input{
+        width: 20rem;
+        padding: .5rem 1rem .5rem .5rem;
+        border-radius: 5%;
+        outline: 0;
+        border: 1px #ccc solid;
+    }
+
+    .input-form{
+        display: flex;
+        flex-direction: column;
+        margin: .5rem 0rem;
+    }
+
+    button{
+        width: 8rem;
+        padding: .5rem 1rem;
+        margin: 2rem 0rem;
+        background-color: white;
+        color: #105a89;
+        border: #105a89 solid 1px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: .4s;
+    }
+
+    button:hover{
+        background-color: #105a89;
+        color: white;
+    }
+
+    button:focus{
+        outline: 0;
+    }
+
+    .button-form{
+        display: flex;
+        justify-content: center;
+    }
+
+    .sign-in-column{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sign-in{
+        color: #105a89;
+        text-decoration: none;
+        margin-top: .5rem;
+        transition: .3s ease-in;
+    }
+
+    .sign-in:hover{
+        color: rgb(136, 46, 46);
+        font-weight: bold;
+    }
+
+{% endblock style %}
+
+{% block content %}
+<section class="section-b">
+    <div class="form-div">
+        <form class="form" method="post">
+            {% csrf_token %}
+            <div>
+                <h3 id="form-header-text">Login</h3>
+            </div>
+            <div class="input-form">
+                <label for="{{ user_form.username.id_for_label }}">Username</label>
+                {{ user_form.username }}
+                {{ user_form.username.errors }}
+            </div>
+            <div class="input-form">
+                <label for="{{ user_form.password.id_for_label }}">Password</label>
+                {{ user_form.password }}
+                {{ user_form.password.errors }}
+            </div>
+            <div class="button-form">
+                <button type="submit" value="login">Login</button>
+            </div>
+            <div class="sign-in-column">
+                <div>
+                    <h4>Don't have an account?</h4>
+                    <a href="{% url 'registration:register' %}" class="sign-in">Sign up</a>
+                </div>
+                <a href="{% url 'user_profiles:password_reset' %}" class="sign-in">Forgot password?</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock content %}

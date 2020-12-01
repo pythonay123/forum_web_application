@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+
+{% block style %}
+  /* -------------Section B----------- */
+
+.section-b{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 0 3px 7px 0 #ccc; */
+    padding: 6rem 5rem;
+    border-radius: 1%;
+    margin-top: 10rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+#form-header-text{
+    color: #105a89;
+    margin-bottom: 2rem;
+}
+
+label{
+    margin: .4rem;
+}
+
+input{
+    width: 20rem;
+    padding: .5rem 1rem .5rem .5rem;
+    border-radius: 5%;
+    outline: 0;
+    border: 1px #ccc solid;
+}
+
+.input-form{
+    display: flex;
+    flex-direction: column;
+    margin: .5rem 0rem;
+}
+
+.post-text-area{
+    width: 20rem;
+    padding: 1rem;
+    border: none;
+}
+
+button{
+    width: 8rem;
+    padding: .5rem 1rem;
+    margin: 2rem 0rem;
+    background-color: white;
+    color: #105a89;
+    border: #105a89 solid 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s;
+    outline: none;
+}
+
+button:hover{
+    background-color: #105a89;
+    color: white;
+}
+
+button:focus{
+    outline: 0;
+}
+
+.button-form{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.sign-in-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#sign-in{
+    color: #105a89;
+    text-decoration: none;
+    margin-top: .5rem;
+    transition: .3s ease-in;
+}
+
+#sign-in:hover{
+    color: rgb(136, 46, 46);
+    font-weight: bold;
+}
+
+.topic p {
+            font-size: 0.8rem;
+        }
+
+@media (max-width: 480px){
+ /* -------------Section B----------- */
+
+    .section-b{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: unset;
+        padding: 6rem 3rem;
+        border-radius: 1%;
+        margin-top: 3rem;
+        background-color: #fff;
+    }
+
+    #form-header-text{
+        color: #105a89;
+        margin-bottom: 2rem;
+    }
+
+    label{
+        margin: .4rem;
+    }
+
+    input{
+        width: 20rem;
+        padding: .5rem 1rem .5rem .5rem;
+        border-radius: 5%;
+        outline: 0;
+        border: 1px #ccc solid;
+    }
+
+    .input-form{
+        display: flex;
+        flex-direction: column;
+        margin: .5rem 0rem;
+    }
+
+    button{
+        width: 8rem;
+        padding: .5rem 1rem;
+        margin: 2rem 0rem;
+        background-color: white;
+        color: #105a89;
+        border: #105a89 solid 1px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: .4s;
+    }
+
+    button:hover{
+        background-color: #105a89;
+        color: white;
+    }
+
+    button:focus{
+        outline: 0;
+    }
+
+    .button-form{
+        display: flex;
+        justify-content: center;
+    }
+
+    .sign-in-column{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #sign-in{
+        color: #105a89;
+        text-decoration: none;
+        margin-top: .5rem;
+        transition: .3s ease-in;
+    }
+
+    #sign-in:hover{
+        color: rgb(136, 46, 46);
+        font-weight: bold;
+    }
+}
+
+
+{% endblock style %}
+
+{% block content %}
+    <section class="section-b">
+        <div class="form-div">
+            <form action="" class="form" method="POST">
+                {% csrf_token %}
+                <div class="topic">
+                  <input type="text" name="topic" class="form-control" id="{{ form.id_topic }}" placeholder="Thread Topic" required>
+                </div>
+                <div class="input-form">
+                    <label for="{{ form.content.id_for_label }}"></label>
+                    <textarea name="content" class="post-text-area" id="{{ form.id_content }}" placeholder="Type comment..." cols="10" rows="10" required></textarea>
+                </div>
+                <div class="button-form">
+                    <button type="submit" value="submit">Create Thread</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

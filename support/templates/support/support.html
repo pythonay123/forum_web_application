@@ -1,0 +1,702 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Support{% endblock title %}
+
+{% block style %}
+
+/*--------------Section B------------ */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'work sans', sans-serif;
+    background-color: #fff;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.section-b{
+    background-color: white;
+}
+
+.section-b > h1{
+    color: #105a89;
+    padding: 7rem 0rem 1rem 5rem;
+    font-size: 3rem;
+}
+
+.section-b > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10rem;
+}
+
+.search-div{
+    width: 70%;
+}
+
+.search-div > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #105a89;
+    border-radius: 10px;
+    height: 4rem;
+    width: 100%;
+    box-shadow: 1 3px 7px 0 #ccc;
+}
+
+input{
+    width: 45rem;
+    padding: .5rem 2rem .5rem 1rem;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+}
+
+#faq{
+    color: #fff;
+    padding-right: 1.5rem;
+}
+
+#font-awesome{
+    text-decoration: none;
+    color: #555;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-left: 1rem;
+}
+
+#font-awesome > li{
+    list-style-type: none;
+}
+
+/*---------Section C--------------*/
+
+.section-c{
+    width: 100vw;
+}
+
+.section-c > div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    padding: 5rem 0;
+    background-color: #eff3f6;
+}
+
+.c-1{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.c-1-1,
+.c-1-2{
+    display: flex;
+    padding: 2rem 0;
+}
+
+#card-1,
+#card-2,
+#card-3,
+#card-4{
+    width: 20rem;
+    height: 15rem;
+    background-color: #fff;
+    border-radius: 15%;
+    transform: translateY(0);
+    box-shadow: 0 3px 7px 0 #a8a7a7;
+    transition: .7s all ease-in-out;
+}
+
+
+#card-1:hover{
+    transform: translateY(-7%);
+}
+
+#card-2:hover{
+    transform: translateY(-7%);
+}
+
+#card-3:hover{
+    transform: translateY(-7%);
+}
+
+#card-4:hover{
+    transform: translateY(-7%);
+}
+
+#card-1{
+    margin-right: 8rem;
+}
+
+#card-2{
+    margin-left: 8rem;
+}
+
+#card-3{
+    margin-right: 8rem;
+}
+
+#card-4{
+    margin-left: 8rem;
+}
+
+#card-1 > a,
+#card-2 > a,
+#card-3 > a,
+#card-4 > a{
+    text-decoration: none;
+    color: #105a89;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    width: 100%;
+    height: 100%;
+}
+
+/* ---------Section-d----------- */
+
+.section-d{
+    background-color: #fff;
+    padding-top: 5rem;
+}
+
+.section-d > div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+img{
+    width: 40rem;
+    height: auto;
+    border-radius: 3%;
+}
+
+#need-help{
+    color: #105a89;
+    margin-bottom: 1rem;
+}
+
+#help{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #105a89;
+}
+
+.call{
+    display: flex;
+}
+
+.call > h4 {
+    margin-right: .5rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 900px){
+  /*--------------Section B------------ */
+
+.section-b{
+    background-color: white;
+}
+
+.section-b > h1{
+    color: #105a89;
+    padding: 7rem 0rem 0rem 5rem;
+    font-size: 2rem;
+}
+
+.section-b > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 8rem;
+}
+
+.search-div{
+    width: 70%;
+}
+
+.search-div > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #105a89;
+    border-radius: 10px;
+    height: 4rem;
+    width: 100%;
+}
+
+input{
+    width: 25rem;
+    padding: .5rem 2rem .5rem 1rem;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+}
+
+#faq{
+    color: #fff;
+    padding-right: 1.5rem;
+}
+
+#font-awesome{
+    text-decoration: none;
+    color: #555;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-left: 1rem;
+}
+
+#font-awesome > li{
+    list-style-type: none;
+}
+
+/*---------Section C--------------*/
+
+.section-c{
+    width: 100vw;
+}
+
+.section-c > div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    padding: 5rem 0;
+    background-color: #eff3f6;
+}
+
+.c-1{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.c-1-1,
+.c-1-2{
+    display: flex;
+    padding: 2rem 0;
+}
+
+#card-1,
+#card-2,
+#card-3,
+#card-4{
+    width: 15rem;
+    height: 10rem;
+    background-color: #fff;
+    border-radius: 15%;
+    transform: translateY(0);
+    box-shadow: 0 3px 7px 0 #a8a7a7;
+    transition: .7s all ease-in-out;
+}
+
+
+#card-1:hover{
+    transform: translateY(-7%);
+}
+
+#card-2:hover{
+    transform: translateY(-7%);
+}
+
+#card-3:hover{
+    transform: translateY(-7%);
+}
+
+#card-4:hover{
+    transform: translateY(-7%);
+}
+
+#card-1{
+    margin-right: 6rem;
+}
+
+#card-2{
+    margin-left: 6rem;
+}
+
+#card-3{
+    margin-right: 6rem;
+}
+
+#card-4{
+    margin-left: 6rem;
+}
+
+#card-1 > a,
+#card-2 > a,
+#card-3 > a,
+#card-4 > a{
+    text-decoration: none;
+    color: #105a89;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    width: 100%;
+    height: 100%;
+}
+
+/* ---------Section-d----------- */
+
+.section-d{
+    background-color: #fff;
+    padding-top: 5rem;
+}
+
+.section-d > div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+img{
+    width: 27rem;
+    height: auto;
+    border-radius: 3%;
+}
+
+#need-help{
+    color: #105a89;
+    margin-bottom: 1rem;
+}
+
+#help{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #105a89;
+}
+
+.call{
+    display: flex;
+}
+
+.call > h4 {
+    margin-right: .5rem;
+    margin-bottom: 1rem;
+}
+
+}
+
+
+@media (max-width: 480px){
+/*--------------Section B------------ */
+
+.section-b{
+    background-color: white;
+}
+
+.section-b > h1{
+    color: #105a89;
+    padding: 7rem 0rem 0rem 1.2rem;
+    font-size: 1.5rem;
+}
+
+.section-b > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 8rem;
+}
+
+.search-div{
+    width: 90%;
+}
+
+.search-div > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #105a89;
+    border-radius: 10px;
+    height: 4rem;
+    width: 100%;
+}
+
+input{
+    width: 15rem;
+    padding: .5rem 2rem .5rem 1rem;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+}
+
+#faq{
+    color: #fff;
+    padding-right: 1rem;
+    font-size: 1rem;
+}
+
+#font-awesome{
+    text-decoration: none;
+    color: #555;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-left: 1rem;
+}
+
+#font-awesome > li{
+    list-style-type: none;
+}
+
+/*---------Section C--------------*/
+
+.section-c{
+    width: 100vw;
+}
+
+.section-c > div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    padding: 5rem 0;
+    background-color: #eff3f6;
+}
+
+.c-1{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.c-1-1,
+.c-1-2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.c-1-2{
+    padding: 0rem;
+}
+
+#card-1,
+#card-2,
+#card-3,
+#card-4{
+    width: 15rem;
+    height: 10rem;
+    background-color: #fff;
+    border-radius: 15%;
+    transform: translateY(0);
+    box-shadow: 0 3px 7px 0 #a8a7a7;
+    transition: .7s all ease-in-out;
+    outline: none;
+}
+
+
+#card-1:hover{
+    transform: translateY(-7%);
+    outline: none;
+}
+
+#card-2:hover{
+    transform: translateY(-7%);
+    outline: none;
+}
+
+#card-3:hover{
+    transform: translateY(-7%);
+    outline: none;
+}
+
+#card-4:hover{
+    transform: translateY(-7%);
+    outline: none;
+}
+
+#card-1{
+    margin-right: unset;
+    margin-bottom: 1rem;
+}
+
+#card-2{
+    margin-left: unset;
+    margin-top: 1rem;
+}
+
+#card-3{
+    margin-right: unset;
+    margin-bottom: 1rem;
+}
+
+#card-4{
+    margin-left: unset;
+    margin-top: 1rem;
+}
+
+#card-1 > a,
+#card-2 > a,
+#card-3 > a,
+#card-4 > a{
+    text-decoration: none;
+    color: #105a89;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ---------Section-d----------- */
+
+.section-d{
+    background-color: #fff;
+    padding-top: unset;
+}
+
+.section-d > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+img{
+    width: 100vw;
+    height: auto;
+    border-radius: 3%;
+}
+
+#need-help{
+    color: #105a89;
+    margin-bottom: 1rem;
+}
+
+#help{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #105a89;
+}
+
+.d-1-2{
+    margin-top: 2rem;
+}
+
+.call{
+    display: flex;
+}
+
+.call > h4 {
+    margin-right: .5rem;
+    margin-bottom: 1rem;
+}
+}
+
+
+{% endblock style %}
+
+
+{% block content %}
+<section class="section-b">
+      <h1>Support!</h1>
+      <div>
+          <div class="search-div">
+              <div>
+                  <div>
+                      <h2 id="faq">
+                          FAQ
+                      </h2>
+                  </div>
+                  <div>
+                      <input type="search" name = 'faq' placeholder="Search"/>
+                  </div>
+                  <div id="search-box">
+                      <a href="/" id="font-awesome"><i class="fa fa-search" aria-hidden="true"></i></a>
+                  </div>
+              </div>
+          </div>
+      </div>
+</section>
+
+ <section class="section-c">
+      <div>
+          <div class="c-1">
+              <div class="c-1-1">
+                  <div id="card-1">
+                      <a href="{% url 'support:account' %}" class="card"><h1>Account Support</h1></a>
+                  </div>
+                  <div id="card-2">
+                      <a href="{% url 'support:vendor' %}" class="card"><h1>Vendor Support</h1></a>
+                  </div>
+              </div>
+              <div class="c-1-2">
+                  <div id="card-3">
+                      <a href="{% url 'support:general' %}" class="card"><h1>General Support</h1></a>
+                  </div>
+                  <div id="card-4">
+                      <a href="{% url 'support:market' %}" class="card"><h1>Market Place Support</h1></a>
+                  </div>
+              </div>
+          </div>
+      </div>
+</section>
+
+<section class="section-d">
+    <div>
+        <div>
+            <img src="{% static 'assets/img/Call-Center-Queue.jpg' %}" alt="an image">
+        </div>
+        <div class="d-1-2">
+            <h2 id="need-help">Need help?</h2>
+            <div id="help">
+                <div class="call">
+                    <h4>Europe(Toll free)</h4>
+                    <p>+234 8000 00 01</p>
+                </div>
+                <div class="call">
+                    <h4>North America(Toll free)</h4>
+                    <p>+234 8000 00 01</p>
+                </div>
+                <div class="call">
+                    <h4>Asia(Toll free)</h4>
+                    <p>+234 8000 00 01</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

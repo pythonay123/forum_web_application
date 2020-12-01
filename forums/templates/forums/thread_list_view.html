@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load tz %}
+
+{% block style %}
+   body {
+    margin: 0;
+    background: white;
+    opacity: 1;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+  }
+
+  header {
+    background: #2B547E;
+  }
+
+  .topics-list {
+    padding-top: 5vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .topics-list ul {
+    position: relative;
+    width: 86vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    box-sizing: border-box;
+    box-show: inset 0 0 7px rgba(210, 208, 208, 0.9)
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .topics-list ul li {
+    display: flex;
+    background: #E0E0E0;
+    opacity: 0.6
+    padding: 5px 10px;
+    color: black;
+    padding: 3px 0;
+    transition: 0.5s;
+  }
+
+  .topics-list ul li:nth-child(1){
+    background: #E0E0E0;
+    opacity: 1;
+  }
+
+  .topics-list ul li:nth-child(2){
+    background: #E0E0E0;
+    opacity: 0.9;
+  }
+
+  .topics-list ul li:nth-child(3){
+    background: #E0E0E0;
+    opacity: 1;
+  }
+
+  .topics-list ul li:nth-child(4){
+    background: #E0E0E0;
+    opacity: 0.9;
+  }
+
+  .topics-list ul li span:nth-child(1) {
+    padding-left: 2vw;
+    width: 35vw;
+  }
+
+  .topics-list ul li span:nth-child(1) p {
+    width: 10vw;
+    font-size: 12px;
+  }
+
+  .topics-list ul li span:nth-child(2) {
+    width: 15vw;
+    font-size: 12px;
+    padding-top: 1vw;
+  }
+
+  .topics-list ul li span:nth-child(3) {
+    width: 10vw;
+    text-align: right;
+    font-size: 12px;
+    padding-top: 1vw;
+  }
+
+  .topics-list ul li span:nth-child(4) {
+    width: 20vw;
+    text-align: right;
+    font-size: 12px;
+    padding-top: 1vw;
+  }
+
+  .topics-list ul li:hover {
+    transform: scale(1.0005);
+    background: #C8C6C6;
+    opacity: 0.8;
+  }
+
+  #new-topic {
+    float: right;
+    padding-right: 5vw;
+    margin-bottom: 1vw;
+    border: 1px solid;
+    padding: 8px;
+    font-size: 13px;
+    box-shadow: 1px 2px;
+    background-color: #2B547E;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+   @media only screen and (min-width: 700px) and (max-width: 1090px){
+    .topics-list {
+      padding-top: 7vw;
+      padding-left: 5vw;
+      padding-right: 5vw;
+    }
+  }
+
+  @media only screen and (min-width: 300px) and (max-width: 700px){
+    .topics-list {
+      padding-top: 12vw;
+      padding-left: 5vw;
+      padding-right: 5vw;
+    }
+  }
+
+{% endblock style %}
+
+{% block content %}
+  <div class="topics-list">
+    <a id="new-topic" href="#">New Topic</a>
+    <ul>
+      {% for thread in threads %}
+      <li>
+        <span class="topic"><strong class="topic-name"><a href="#">{{ thread.topic }}</a></strong>
+          <p class="topic-date">Posted on {% localtime on %}{{ thread.posted_date }}{% endlocaltime %}</p>
+        </span>
+        <span class="posted-by">By {{ thread.author }}</span>
+        <span class="last-post-date">Last post on {{ thread.last_active_post }}</span>
+        <span class="number-posts">Posts: {{ thread.number_of_posts }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock content %}

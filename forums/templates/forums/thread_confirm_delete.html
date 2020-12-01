@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block style %}
+
+ header {
+    background: #2B547E;
+  }
+
+  .content-postform{
+    padding-top: 6vw;
+    padding-left: 15vw;
+    padding-right: 15vw;
+  }
+
+  .fieldWrapper {
+    text-align: center;
+  }
+
+  .border-label {
+    color: #105a89;
+  }
+
+  .form-grp2 {
+    margin-top: 1.5vw;
+    text-align: center;
+  }
+
+  .btn-info {
+    color: #90ee90;
+    width: 8rem;
+    padding: .5rem 1rem;
+    margin: 2rem 0rem;
+    background-color: #fff;
+    color: #105a89;
+    box-shadow: 0 0 15px #105a89;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s;
+    outline: none;
+    margin-right: 5rem;
+    text-decoration: none;
+  }
+
+.btn-danger {
+    color:red;
+    width: 8rem;
+    padding: .5rem 1rem;
+    margin: 2rem 0rem;
+    background-color: #fff;
+    color: #105a89;
+    box-shadow: 0 0 15px #105a89;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s;
+    outline: none;
+    text-decoration: none;
+  }
+
+    .btn-danger a {
+        text-decoration: none;
+    }
+
+    .content-section {
+        text-align:center;
+        padding-top: 8vw;
+    }
+
+    #delete-thread {
+        color: red;
+    }
+
+  @media only screen and (min-width: 1090px) and (max-width: 1300px){
+    .content-postform {
+      padding-top: 6vw;
+      padding-left: 15vw;
+      padding-right: 15vw;
+    }
+  }
+
+   @media only screen and (min-width: 700px) and (max-width: 1090px){
+    .content-postform {
+      padding-top: 9vw;
+      padding-left: 13vw;
+      padding-right: 13vw;
+    }
+  }
+
+  @media only screen and (min-width: 300px) and (max-width: 700px){
+    .content-postform {
+      padding-top: 12vw;
+      padding-left: 15vw;
+      padding-right: 15vw;
+    }
+
+    .btn-info {
+    margin-right: 1rem;
+  }
+
+    .form-group h3 {
+        font-size: 0.9rem;
+    }
+  }
+
+.no-available {
+  margin-top: 5vh;
+  margin-bottom: 60vh;
+}
+
+{% endblock style %}
+
+{% block content %}
+    <div class="content-postform">
+        <form method="post">
+            {% csrf_token %}
+            <div class="content-section">
+                <div class="form-group">
+                    <h3>Are you sure you want to delete the thread <span id="delete-thread">{{ thread.topic }}</span></h3>
+                </div>
+                <div class="form-grp2">
+                    <button class="btn-info" type="submit">Confirm</button>
+                    <button class="btn-danger" type="submit">
+                        <a href="{% url 'posts:thread-detail' thread.id %}">Cancel</a>
+                    </button>
+                </div>
+            </div>
+            <div class="no-available"></div>
+        </form>
+    </div>
+{% endblock %}
