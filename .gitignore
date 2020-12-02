@@ -117,5 +117,5 @@ media/
 static/static_root/geoip
 Documentation for current progress of django web forum application.docx
 forum application setup.txt
-.idea
+.idea/
 .gitignore
